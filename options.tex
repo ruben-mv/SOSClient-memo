@@ -1,0 +1,57 @@
+%%% Datos del TFG
+\newcommand{\tfgauthor}{Rub{\'e}n Mosquera Varela}
+\newcommand{\tfgtutor}{Jos{\'e} Ram{\'o}n R{\'i}os Viqueira}
+\newcommand{\tfgcotutor}{Manuel Antonio Regueiro Seoane}
+\newcommand{\tfgtitle}{Visualización de observacións en SIX de escritorio}
+\newcommand{\tfgsubtitle}{}
+\newcommand{\tfgtitleshort}{Memoria SOS Client} %Para meta-datos PDF
+\newcommand{\tfgcopyright}{Copyright (C) 2015, \tfgauthor}
+\newcommand{\tfglicense}{Creative Commons (by-sa) 2.5 Spain}
+\newcommand{\tfglicenseurl}{http://creativecommons.org/licenses/by-sa/3.0/}
+\newcommand{\tfgkeywords}{TODO}
+\newcommand{\logoUni}{images/logo_usc.eps} % Logotipo de la Universidad
+
+%%%
+% CONFIG: Meta-datos para inclusión en PDF y XMP
+%
+\hypersetup{
+    pdftitle        = {\tfgtitleshort},
+    pdfauthor       = {\tfgauthor},
+    pdfsubject      = {\tfgtitle},
+    pdfkeywords     = {\tfgkeywords},
+    pdfcreator      = {\tfgauthor},
+    pdfproducer     = {\tfgauthor~powered~by~\LaTeX},
+    pdfcopyright    = {\tfgcopyright},
+    pdflicenseurl   = {\tfglicenseurl},
+    pdfstartview    = FitB                      % Ajustar la página a la ventana
+}
+
+%----------------------------------------------------------------------------------------
+%	FLOATS: TABLES, FIGURES AND CAPTIONS SETUP
+%----------------------------------------------------------------------------------------
+\usepackage{booktabs}
+\usepackage{tabularx} % Better tables
+\setlength{\extrarowheight}{3pt} % Increase table row height
+%\newcommand{\tableheadline}[1]{\multicolumn{2}{c}{#1}}
+\newcommand{\risktable}[7]{
+	\begin{table}[H]
+	\centering
+		\begin{tabularx}{\textwidth}{lXl} \toprule
+		\multicolumn{2}{l}{{#1}.-{#2}} \\
+		\cmidrule(r){1-2}
+		\textbf{Descrición} &  #3\\ 
+		\textbf{Probabilidade} &  #4\\ 
+		\textbf{Impacto} &  #5\\ 
+		\textbf{Nivel de exposición} &  #6\\ 
+		\textbf{Resposta ao risco} &  #7\\ 
+		\bottomrule
+		\end{tabularx}
+	\caption{{#1}.-{#2}}
+	\label{tab:#1}
+	\end{table}}
+
+%----------------------------------------------------------------------------------------
+%	HYPHENATION
+%----------------------------------------------------------------------------------------
+\hyphenation{In-te-re-se}
+\hyphenation{CiTIUS}
