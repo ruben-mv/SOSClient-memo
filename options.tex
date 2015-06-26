@@ -35,6 +35,7 @@
 \newcommand{\risktable}[7]{
 	\renewcommand{\theriskcnt}{#1}
 	\refstepcounter{riskcnt}
+	~\\
 	\noindent\colorbox{gray!20}{\parbox{\textwidth}{\hspace{0.4cm}\textsc{{#1}.- {#2}}}}\label{rsc:#1}
 	\begin{description}[style=multiline,labelindent=0.4cm,leftmargin=4.7cm,itemsep=1pt, partopsep=10pt]
  	\item[Descrición] #3
@@ -50,6 +51,7 @@
 \newcommand{\uctable}[7]{
 	\renewcommand{\theuccnt}{#1}
 	\refstepcounter{uccnt}
+	~\\
 	\noindent\colorbox{gray!20}{\parbox{\textwidth}{\hspace{0.4cm}\textsc{{#1}.- {#2}}}}\label{uc:#1}
 	\begin{description}[style=multiline,labelindent=0.4cm,leftmargin=4.5cm,itemsep=1pt, partopsep=10pt]
  	\item[Propósito] #3 
@@ -67,6 +69,7 @@
 \newcommand{\reqtable}[5]{
 	\renewcommand{\thereqcnt}{#1}
 	\refstepcounter{reqcnt}
+	~\\
 	\noindent\colorbox{gray!20}{\parbox{\textwidth}{\hspace{0.4cm}\textsc{{#1}.- {#2}}}}\label{req:#1}
 	\begin{description}[style=multiline,labelindent=0.4cm,leftmargin=4.5cm,itemsep=1pt, partopsep=10pt]
  	\item[Descrición] #3 

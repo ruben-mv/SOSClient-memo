@@ -28,7 +28,7 @@ A continuación descríbense os casos de uso identificados en colaboración co c
 			{O usuario crea selecciona a través da interface gráfica a oferta e propiedades a consultar, así como outros filtros máis avanzados, por entidade de interese, sensor, período de tempo, filtros espaciais, etc. A aplicación descarga as observacións e xera unha capa vectorial en QGIS coa información procesada.
 			} %Escenario
 
-\uctable 	{CU.03}{Visualizar gráficas 2D}
+\uctable 	{CU.03}{Visualizar gráficas en dúas dimensións}
 			{Visualizar nunha gráfica en dúas dimensións a información das observacións a partir da capa xerada. Débese poder visualizar a evolución de unha propiedade o con respecto ó tempo, e tamén sería de utilidade en algúns caso poder enfrontar unha propiedade contra outra. } %Propósito
 			{-} %Relacións
 			{Ter xerada unha capa con datos de observacións.} %Precondicións 
@@ -75,62 +75,105 @@ Clasificaremos os requisitos pola súa relevancia segundo o cadro \ref{tab:relev
 \subsection{Requisitos funcionais}
 Os requisitos funcionais definidos, verificados e revisados para o presente proxecto son os que seguen:
 
-\reqtable 	{RF.01}{}
-		  	{}%Descrición
-			{}%Relevancia
-			{}%Criterio de validación
+\reqtable 	{RF.01}{Conectar con servidor SOS}
+		  	{O usuario pode introducir o enderezo dun servidor que proporcione o servizo SOS e obter do mesmo as súas capacidades. Estas capacidades deben visualizarse nun formato amigable para o usuario.}%Descrición
+			{Esixido}%Relevancia
+			{O requisito cumprirase se a aplicación e capaz de conectarse cos servidores indicados e procesar o resultado da operación \emph{GetCapabilities} para visualizala nun formato lexible.}%Criterio de validación
 			
-\reqtable 	{RF.02}{}
-		  	{}%Descrición
-			{}%Relevancia
-			{}%Criterio de validación
+\reqtable 	{RF.02}{Gardar lista de servidores SOS}
+		  	{O usuario poderá xestionar unha lista de servidores SOS para os que se indicará o enderezo e un nome para identificalo.}%Descrición
+			{Opcional}%Relevancia
+			{O requisito cumprirase se a aplicación permite gardar unha lista de servidores e facer o mantemento da mesma.}%Criterio de validación
 			
-\reqtable 	{RF.03}{}
-		  	{}%Descrición
-			{}%Relevancia
-			{}%Criterio de validación
+\reqtable 	{RF.03}{Visualizar XML das capacidades do servidor}
+		  	{O usuario poderá visualizar en formato texto, con resaltado de sintaxe, e nun visor de árbore o XML que describe as capacidades do servidor.}%Descrición
+			{Desexado}%Relevancia
+			{O requisito cumprirase se a aplicación dispón dun visor de XML con resaltado de sintaxe e visor de árbore no que se amose o ficheiro resposta do servidor á petición \emph{GetCapabilities}.}%Criterio de validación
 			
-\reqtable 	{RF.04}{}
-		  	{}%Descrición
-			{}%Relevancia
-			{}%Criterio de validación
+\reqtable 	{RF.04}{Xerar capa vectorial cas observacións do servidor}
+		  	{Unha vez consultadas as capacidades do servidor, o usuario poderá seleccionar unha oferta e unha ou varias das propiedades da mesma para descargar os datos e xerar unha capa vectorial coas observacións descargadas.}%Descrición
+			{Esixido}%Relevancia
+			{O requisito cumprirase se a aplicación descarga os datos solicitados do servidor e os procesa XML creando un rexistro na capa vectorial para cada observación, cos datos de xeometría, tempo e o valor de cada propiedade.}%Criterio de validación
+			
+\reqtable 	{RF.05}{Permitir filtrado básico das observacións a descargar}
+		  	{O usuario poderá indicar o rango de tempo no que lle interesan as observacións, así como un ou máis sensores e unha ou máis entidades.}%Descrición
+			{Esixido}%Relevancia
+			{O requisito cumprirase se a través de interface se pode seleccionar un rango de tempo, unha lista de sensores e unha lista de entidades e estes datos se inclúen no XML para a operación \emph{GetObservations}.}%Criterio de validación
+			
+\reqtable 	{RF.06}{Permitir filtrado avanzado das observacións a descargar}
+		  	{O usuario poderá indicar un filtro espacial que delimite a zona da que quere obter as observacións. A interface mostrará os operadores e tipos de operandos soportados polo servizo. Tamén se poderá indicar un filtro escalar por algunha das propiedades da oferta seleccionada. A interface so mostrará os operandos soportados polo servizo.}%Descrición
+			{Desexado}%Relevancia
+			{O requisito cumprirase se a través de interface se pode indicar un filtro espacial, seleccionando a xeometría sobre o mapa, e un filtro escalar para algunha das propiedades observadas e estes datos se inclúen no XML para a operación \emph{GetObservations}.}%Criterio de validación
+			
+\reqtable 	{RF.07}{Xerar petición de observacións manualmente}
+		  	{O usuario poderá modificar en modo texto o XML xerado a través da interface gráfica,  para obter as observacións desexadas.}%Descrición
+			{Opcional}%Relevancia
+			{O requisito cumprirase se a aplicación permite visualizar e modificar o XML a usar para a operación \emph{GetObservations}.}%Criterio de validación
+			
+\reqtable 	{RF.08}{Xerar gráfica propiedade \emph{vs} tempo}
+		  	{O usuario poderá, a partir dunha entidade seleccionada no mapa, visualizar unha gráfica que mostre unha liña coa evolución temporal da propiedade observada.}%Descrición
+			{Esixido}%Relevancia
+			{O requisito cumprirase se a aplicación mostra unha gráfica de liña representando o tempo no eixo X e os valores da propiedade observada no eixo Y.}%Criterio de validación
+			
+\reqtable 	{RF.09}{Xerar gráfica para enfrontar dúas propiedades}
+		  	{O usuario poderá, a partir dunha entidade seleccionada no mapa, visualizar unha gráfica de puntos indicando unha propiedade para o eixo X e outra para o Y.}%Descrición
+			{Desexado}%Relevancia
+			{O requisito cumprirase se a aplicación}%Criterio de validación
+			
+\reqtable 	{RF.10}{Xerar gráfica con varias series}
+		  	{O usuario poderá seleccionar varias entidades no mapa, e cada unha delas será unha serie de datos na gráfica visualizada. O usuario poderá configurar o estilo de cada unha das series.}%Descrición
+			{Desexado}%Relevancia
+			{O requisito cumprirase se a aplicación permite xerar gráficas con varias entidades seleccionadas, de xeito que as observacións de cada entidade teñan un formato diferente. O tipo de liña, de marcador, e a cor de cada serie de datos ten que poder modificarse.}%Criterio de validación
+			
+\reqtable 	{RF.11}{Xerar animación no visor de mapas}
+		  	{O usuario disporá dunha barra de tempo integrada no visor de mapas, que permitirá visualizar só as observacións correspondentes o tempo indicado nesta barra. Ademais disporá dun botón de reprodución que desprazará esta barra automaticamente.}%Descrición
+			{Opcional}%Relevancia
+			{O requisito cumprirase se a aplicación xera unha capa válida para ser engadida ó \emph{plugin} TimeManager de QGIS.}%Criterio de validación
 
 \subsection{Requisitos non funcionais}
 Os requisitos non funcionais definidos, verificados e revisados para o presente proxecto son os que seguen:
 
-\reqtable 	{RNF.01}{}
-		  	{}%Descrición
-			{}%Relevancia
-			{}%Criterio de validación
+\reqtable 	{RNF.01}{Versión de SOS 1.0}
+		  	{A pesar de existir a versión 2.0 do estándar SOS debe soportarse a versión 1.0, pois esta é a que implementan os servidores desenvolvidos polo CiTIUS.}%Descrición
+			{Esixido}%Relevancia
+			{O requisito cumprirase se a aplicación é capaz de comunicarse con servidores que implementen a versión 1.0 do estándar SOS.}%Criterio de validación
+			
+\reqtable 	{RNF.02}{Linguaxe de programación Python}
+		  	{QGIS soporta \emph{plugins} programados en C++ ou en Python, pero so os programados en Python son instalables desde o xestor de \emph{plugins} incorporado na aplicación.}%Descrición
+			{Desexado}%Relevancia
+			{A aplicación programarase en linguaxe Python.}%Criterio de validación
+			
+\reqtable 	{RNF.03}{Consistencia da interface gráfica}
+		  	{Dado que a aplicación a desenvolver é un \emph{plugin} que se integrará dentro da propia aplicación QGIS o aspecto e deseño da interface gráfica debe ser consistente coa do propio QGIS.}%Descrición
+			{Desexado}%Relevancia
+			{O requisito cumprirase se usuarios habituados ó QGIS son capaces de usar o \emph{plugin} sin necesidade de indicacións.}%Criterio de validación
+
+\reqtable 	{RNF.04}{Manual de usuario}
+		  	{O usuario terá a súa disposición un manual de uso da aplicación.}%Descrición
+			{Esixido}%Relevancia
+			{O requisito cumprirase se a memoria do proxecto inclúe un apéndice no que se explique o funcionamento básico do \emph{plugin}.}%Criterio de validación
+			
+\reqtable 	{RNF.05}{Internacionalización da aplicación}
+		  	{A aplicación deberá ser deseñada de xeito que poida ser adaptada para outras linguas sen a necesidade de facer cambios a nivel de código.}%Descrición
+			{Opcional}%Relevancia
+			{O requisito cumprirase se o \emph{plugin} pode ser traducido a distintos idiomas sen modificar o código fonte.}%Criterio de validación
+			
+\reqtable 	{RNF.06}{Data límite de execución do proxecto}
+		  	{A data límite de entrega da documentación do proxecto é o venres 10 de Xullo de 2015, segundo o publicado na páxina web da Escola Técnica Superior de Enxeñaría\footnote{\url{http://www.usc.es/etse/files/u1/datasdefensa14_15GREI.pdf}}.}%Descrición
+			{Esixido}%Relevancia
+			{-}%Criterio de validación
 
 \section{Matriz de trazabilidade}
 A matriz de trazabilidade relaciona cada requisito co seu caso de uso de orixe. A matriz de trazabilidade para este proxecto é a representada no cadro \ref{tab:trazaRequisitos}.
 
 \begin{table}[htbp]
 \centering
-\begin{tabular}{|l|c|c|c|c|}
-\hline
- & CU.01 & CU.02 & CU.03 & CU.04 \\ \hline
-RF.01 & $\bullet$ &  &  &  \\ \hline
-RF.02 & $\bullet$ &  &  &  \\ \hline
-RF.03 & $\bullet$ &  &  &  \\ \hline
-RF.04 & $\bullet$ &  &  &  \\ \hline
-RF.05 & $\bullet$ &  &  &  \\ \hline
-RF.06 & $\bullet$ &  &  &  \\ \hline
-RF.07 & $\bullet$ &  &  &  \\ \hline
-RF.08 & $\bullet$ &  &  &  \\ \hline
-RF.09 & $\bullet$ & $\bullet$ &  &  \\ \hline
-RF.10 &  &  &  &  \\ \hline
-RF.11 &  &  &  &  \\ \hline
-RF.12 &  &  &  &  \\ \hline
-RF.13 &  &  &  &  \\ \hline
-RF.14 &  &  &  &  \\ \hline
-RF.15 &  &  &  &  \\ \hline
-RF.16 &  &  &  &  \\ \hline
-RF.17 &  &  &  &  \\ \hline
-RF.18 &  &  &  &  \\ \hline
-RF.19 &  &  &  &  \\ \hline
-RF.20 &  &  &  &  \\ \hline
+\begin{tabular}{l|c|c|c|c|c|c|c|c|c|c|c|}
+ & \rotatebox{90}{\ref{req:RF.01}} & \rotatebox{90}{\ref{req:RF.02}} & \rotatebox{90}{\ref{req:RF.03}} & \rotatebox{90}{\ref{req:RF.04}} & \rotatebox{90}{\ref{req:RF.05}} & \rotatebox{90}{\ref{req:RF.06}} & \rotatebox{90}{\ref{req:RF.07}} & \rotatebox{90}{\ref{req:RF.08}} & \rotatebox{90}{\ref{req:RF.09}} & \rotatebox{90}{\ref{req:RF.10}} & \rotatebox{90}{\ref{req:RF.11}} \\ \hline
+\ref{uc:CU.01} & $\bullet$ & $\bullet$ & $\bullet$ &  &  &  &  &  &  &  &  \\ \hline
+\ref{uc:CU.02} &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  &  &  \\ \hline
+\ref{uc:CU.03} &  &  &  &  &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ &  \\ \hline
+\ref{uc:CU.04} &  &  &  &  &  &  &  &  &  &  & $\bullet$ \\ \hline
 \end{tabular}
 \caption{Matriz de trazabilidade de requisitos}
 \label{tab:trazaRequisitos}
