@@ -1,7 +1,7 @@
 all: traballo presentacion caratula
 
 traballo:
-	latex traballo
+	pdflatex traballo
 	#makeindex ${FICHERO_TEX}.idx
 	bibtex traballo
 	pdflatex traballo
@@ -20,4 +20,5 @@ clean:
 	#ls presentacion.* | grep -v \.tex$ | xargs rm
 	#ls caratula.* | grep -v \.tex$ | xargs rm
 	rm -Rf *log *lot *lof *aux *toc *pdf *blg *bbl *~
-
+	cd capitulos && rm -Rf *log *lot *lof *aux *toc *pdf *blg *bbl *~
+	rm images/*-eps-converted-to.pdf 

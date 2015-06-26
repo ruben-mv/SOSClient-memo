@@ -23,13 +23,21 @@
 \usepackage{a4}
 \usepackage{listings}
 \usepackage{multirow}
-\usepackage{hyperref} % menús no pdf pero non leva ben co package galician
+\usepackage[hidelinks]{hyperref} % menús no pdf pero non leva ben co package galician
 \usepackage{url}
 \usepackage{rotating}
 \usepackage{caption}
+\usepackage[section]{placeins}
+\usepackage{booktabs}
+\usepackage{tabularx} % Better tables
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{xstring, xifthen}
+\usepackage[nottoc, notlot, notlof, notindex]{tocbibind}
 
 \input{options.tex}
-\includeonly{capitulos/xestiondoproxecto}
+%\includeonly{capitulos/titulo,capitulos/certificacion,capitulos/xestiondoproxecto}
+%\includeonly{capitulos/analise}
 \begin{document}
 %%Se reeditan estas funciones para sacar el texto en gallego usando el idioma spanish, porque galician no funciona con hyperref
 \renewcommand{\contentsname}{Índice xeral}
@@ -58,17 +66,15 @@
 \include{capitulos/xestiondoproxecto}\cleardoublepage
 \include{capitulos/analise}\cleardoublepage
 \include{capitulos/deseno}\cleardoublepage
-\include{capitulos/iteracions}\cleardoublepage
+\include{capitulos/implementacion}\cleardoublepage
 \include{capitulos/conclusions}\cleardoublepage
 
 % Aquí empezan os apéndices
 \appendix
 \include{capitulos/apendicea}\cleardoublepage
 \include{capitulos/apendiceb}\cleardoublepage
-\include{capitulos/apendicec}\cleardoublepage
-%\include{capitulos/licenza}\cleardoublepage
-%\include{capitulos/bibliografia}
-%\nocite{*}
+
+\nocite{*}
 \bibliography{bibliografia}
 \bibliographystyle{plain}
 \end{document}

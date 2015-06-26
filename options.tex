@@ -29,26 +29,52 @@
 %----------------------------------------------------------------------------------------
 %	FLOATS: TABLES, FIGURES AND CAPTIONS SETUP
 %----------------------------------------------------------------------------------------
-\usepackage{booktabs}
-\usepackage{tabularx} % Better tables
-\setlength{\extrarowheight}{3pt} % Increase table row height
-%\newcommand{\tableheadline}[1]{\multicolumn{2}{c}{#1}}
+
+%RISCOS
+\newcounter{riskcnt}
 \newcommand{\risktable}[7]{
-	\begin{table}[H]
-	\centering
-		\begin{tabularx}{\textwidth}{lXl} \toprule
-		\multicolumn{2}{l}{{#1}.-{#2}} \\
-		\cmidrule(r){1-2}
-		\textbf{Descrición} &  #3\\ 
-		\textbf{Probabilidade} &  #4\\ 
-		\textbf{Impacto} &  #5\\ 
-		\textbf{Nivel de exposición} &  #6\\ 
-		\textbf{Resposta ao risco} &  #7\\ 
-		\bottomrule
-		\end{tabularx}
-	\caption{{#1}.-{#2}}
-	\label{tab:#1}
-	\end{table}}
+	\renewcommand{\theriskcnt}{#1}
+	\refstepcounter{riskcnt}
+	\noindent\colorbox{gray!20}{\parbox{\textwidth}{\hspace{0.4cm}\textsc{{#1}.- {#2}}}}\label{rsc:#1}
+	\begin{description}[style=multiline,labelindent=0.4cm,leftmargin=4.7cm,itemsep=1pt, partopsep=10pt]
+ 	\item[Descrición] #3
+ 	\item[Probabilidade] #4 
+ 	\item[Impacto] #5 
+ 	\item[Nivel de exposición] #6 
+ 	\item[Resposta ao risco] #7 
+	\end{description}
+	%Se referencia con \ref{rsc:#1}.
+}
+%CASOS DE USO
+\newcounter{uccnt}
+\newcommand{\uctable}[7]{
+	\renewcommand{\theuccnt}{#1}
+	\refstepcounter{uccnt}
+	\noindent\colorbox{gray!20}{\parbox{\textwidth}{\hspace{0.4cm}\textsc{{#1}.- {#2}}}}\label{uc:#1}
+	\begin{description}[style=multiline,labelindent=0.4cm,leftmargin=4.5cm,itemsep=1pt, partopsep=10pt]
+ 	\item[Propósito] #3 
+ 	\item[Actores] Usuario
+ 	\item[Relacións] #4 
+ 	\item[Precondicións] #5 
+ 	\item[Poscondicións] #6
+ 	\item[Escenario] #7
+	\end{description}
+	%Se referencia con \ref{uc:#1}.
+}
+
+%REQUISITOS
+\newcounter{reqcnt}
+\newcommand{\reqtable}[5]{
+	\renewcommand{\thereqcnt}{#1}
+	\refstepcounter{reqcnt}
+	\noindent\colorbox{gray!20}{\parbox{\textwidth}{\hspace{0.4cm}\textsc{{#1}.- {#2}}}}\label{req:#1}
+	\begin{description}[style=multiline,labelindent=0.4cm,leftmargin=4.5cm,itemsep=1pt, partopsep=10pt]
+ 	\item[Descrición] #3 
+ 	\item[Relevancia] #4
+ 	\item[Criterio de validación] #5 
+	\end{description}
+	%Se referencia con \ref{req:#1}.
+}
 
 %----------------------------------------------------------------------------------------
 %	HYPHENATION
