@@ -28,7 +28,7 @@
           <dia:boolean val="true"/>
         </dia:attribute>
         <dia:attribute name="scaling">
-          <dia:real val="0.38074961304664612"/>
+          <dia:real val="0.38074973225593567"/>
         </dia:attribute>
         <dia:attribute name="fitto">
           <dia:boolean val="true"/>
@@ -112,7 +112,7 @@
         <dia:point val="17.6197,6.32405"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="17.5697,6.27405;24.3297,12.174"/>
+        <dia:rectangle val="17.5697,6.27405;24.3297,12.1741"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="17.6197,6.32405"/>
@@ -928,7 +928,7 @@
         <dia:point val="27.5441,7.27337"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="23.8297,7.22337;27.5941,9.74871"/>
+        <dia:rectangle val="23.8297,7.22337;27.5941,9.47405"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -972,7 +972,7 @@
         <dia:point val="27.5441,9.81748"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="23.8297,9.37405;27.5941,11.4208"/>
+        <dia:rectangle val="23.8297,9.02077;27.5941,10.6208"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -1016,7 +1016,7 @@
         <dia:point val="0.0565469,4.79408"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="0.00654692,4.74408;13.879,12.2441"/>
+        <dia:rectangle val="0.0065469,4.74408;13.879,12.2441"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="0.0565469,4.79408"/>
@@ -1120,7 +1120,7 @@
             <dia:string>#layer#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>##</dia:string>
+            <dia:string>#QgsVectorLayer#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>

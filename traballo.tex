@@ -30,13 +30,14 @@
 \usepackage[section]{placeins}
 \usepackage{booktabs}
 \usepackage{tabularx} % Better tables
+\usepackage{tabu}
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{xstring, xifthen}
 \usepackage[nottoc, notlot, notlof, notindex]{tocbibind}
 
 \input{options.tex}
-%\includeonly{capitulos/titulo,capitulos/certificacion,capitulos/xestiondoproxecto,capitulos/analise}
+%\includeonly{capitulos/titulo,capitulos/certificacion,capitulos/xestiondoproxecto,capitulos/analise,capitulos/apendiceb}
 
 \begin{document}
 %%Se reeditan estas funciones para sacar el texto en gallego usando el idioma spanish, porque galician no funciona con hyperref
@@ -74,7 +75,7 @@
 \include{capitulos/apendicea}\cleardoublepage
 \include{capitulos/apendiceb}\cleardoublepage
 
-\nocite{*}
+%\nocite{*}
 \bibliography{bibliografia}
 \bibliographystyle{plain}
 \end{document}
