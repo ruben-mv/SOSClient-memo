@@ -1,2 +1,69 @@
 \chapter{Implementación e probas}
-TODO
+
+A implementación deste proxecto consta de tres ciclos de sprint nos que se desenvolven as dúas compoñentes nas que está dividido. Cada un dos sprints consta das fase de análise, deseño, implementación e probas. Dado que a análise e o deseño se describiron por completo nos capítulos 3 e 4, neste capítulo detallaranse a implementación e probas realizadas para validar os requisitos planificados en cada un dos sprints.
+
+A previsión inicial do contido de cada sprint está recollida no cadro \ref{tab:previsionSprints}, no capítulo de Xestión do proxecto. Neste apartado describirase xa a pila de cada sprint en base ós requisitos definidos, é dicir, o resultado da planificación do sprint. Cabe destacar que para a planificación do sprint non so se ten en conta a relevancia asignada a cada requisito, se non tamén o tempo estimado para levalo a cabo e a súa repercusión no cumprimento dos requisitos non funcionais.
+
+\section{Sprint 1}
+Os requisitos funcionais que se inclúen na pila do primeiro sprint son:
+\begin{itemize}
+\item \ref{req:RF.01}.- Conectar con servidor SOS
+\item \ref{req:RF.02}.- Gardar lista de servidores SOS
+\item \ref{req:RF.04}.- Xerar capa vectorial cas observacións do servidor
+\end{itemize}
+
+Neste ciclo de desenvolvemento levouse a cabo o deseño inicial da interface gráfica para a ventá de conexión co servidor SOS, seguindo como guía as ventás dispoñibles de xeito nativo no QGIS para descargar datos de outros servizos similares (WFS, WMS, WCS), co obxectivo de satisfacer o requisito \ref{req:RNF.03}.
+
+Outra tarefa importante levada a cabo foi a definición dunha estrutura extensible para o módulo de procesamento do XML, de xeito que sexa sinxelo engadir as distintas que vaian aparecendo, debido a gran liberdade que dan os estándares SOS e Observations&Measurements. Tamén se analizaron distintas posibilidades para o procesamento do XML en Python, sendo todas elas moi similares en canto a funcionalidade optouse por empregar a módulo para XML das propias librerías Qt para non engadir dependencias innecesarias.
+
+Tamén se preparou durante este sprint o entorno para a automatización das probas unitarias a través da ferramenta \emph{PyUnit} e programáronse varios casos de probas para o módulo de procesamento de XML en base a ficheiros de exemplo.
+
+Co obxectivo de validar o incremento xerado leváronse a cabo as seguintes probas:
+
+\testtable{PR.01}{Conexión con servidor SOS}
+		  {\begin{itemize}\item \ref{req:RF.01} \item \ref{req:RNF.03}\end{itemize}} %Requerimentos
+		  {Compróbase, a parte das probas unitarias automáticas, a conexión con varios servidores SOS.} %Descripción
+		  {\begin{itemize}
+		  \item A información das capacidades do servizo visualízanse en formato HTML cos estilos propios de QGIS.
+		  \item As ofertas dispoñibles visualízanse nunha caixa de selección, e as propiedades e procedementos relacionados en sendas listas nas que se poden marcar e desmarcar. Estas listas actualízanse correctamente ó modificar a oferta seleccionada.
+		  \end{itemize}} %Resultado
+		  
+\testtable{PR.02}{Xestión de servidores}
+		  {\begin{itemize}\item \ref{req:RF.02} \item \ref{req:RNF.03}\end{itemize}} %Requerimentos
+		  {Próbanse as funcionalidades de alta, baixa e modificación de conexións na interface gráfica, así coma a correcto gardado entre distintas execucións da aplicación.} %Descripción
+		  {Todas as operacións funcionan correctamente.} %Resultado
+
+\testtable{PR.03}{Descargar observacións}
+		  {\begin{itemize}\item \ref{req:RF.04} \\\end{itemize}} %Requerimentos
+		  {Compróbase a execución da operación \emph{GetObservations} contra varios servidores.} %Descripción
+		  {\begin{itemize}
+		  \item O XML descárgase correctamente.
+		  \item O XML procesase e obtéñense as xeometrías contidas no mesmo coas que se crea unha capa vectorial en memoria no QGIS.
+		  \end{itemize}} %Resultado
+		  
+O \ref{req:RF.04} cubriuse parcialmente, pois aínda que se podían visualizar no mapa os puntos correspondentes as observacións o resto de información do XML se trata correctamente.
+
+Tendo en conta a matriz de trazabilidade do cadro \ref{tab:trazaRequisitos}, este primeiro incremento non resolve ningún caso de uso completo.
+
+\section{Sprint 2}
+Na pila do segundo sprint inclúense os seguintes requisitos funcionais:
+\begin{itemize}
+\item \ref{req:RF.04}.- Xerar capa vectorial cas observacións do servidor (continuación)
+\item \ref{req:RF.03}.- Visualizar XML das capacidades do servidor
+\item \ref{req:RF.05}.- Permitir filtrado básico das observacións a descargar
+\item \ref{req:RF.07}.- Xerar petición de observacións manualmente
+\item \ref{req:RF.08}.- Xerar gráfica propiedade vs tempo
+\item \ref{req:RF.11}.- Xerar animación no visor de mapas
+\end{itemize}
+
+TODO: Describir as tarefas máis relevantes, as probas realizadas e os casos de uso cubertos ó finalizar o sprint.
+
+\section{Sprint 3}
+
+\begin{itemize}
+\item \ref{req:RF.06}.- Permitir filtrado avanzado das observacións a descargar
+\item \ref{req:RF.09}.- Xerar gráfica para enfrontar dúas propiedades
+\item \ref{req:RF.10}.- Xerar gráfica con varias series
+\end{itemize}
+
+TODO: Describir as tarefas máis relevantes, as probas realizadas e os casos de uso cubertos ó finalizar o sprint.

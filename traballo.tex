@@ -11,7 +11,7 @@
 \documentclass[12pt,twoside,a4paper]{book}
 % pódense engadir todos os packages necesarios
 \usepackage[utf8]{inputenc}
-% \usepackage[latin1]{inputenc}
+%\usepackage[latin1]{inputenc}
 %\usepackage[galician]{babel}
 \usepackage[spanish]{babel}
 \usepackage{graphicx}
@@ -23,7 +23,7 @@
 \usepackage{a4}
 \usepackage{listings}
 \usepackage{multirow}
-\usepackage[hidelinks]{hyperref} % menús no pdf pero non leva ben co package galician
+\usepackage{hyperref} % menús no pdf pero non leva ben co package galician
 \usepackage{url}
 \usepackage{rotating}
 \usepackage{caption}
@@ -35,6 +35,11 @@
 \usepackage{xcolor}
 \usepackage{xstring, xifthen}
 \usepackage[nottoc, notlot, notlof, notindex]{tocbibind}
+
+%Formato de enlaces en PDF
+\hypersetup{%
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
 
 \input{options.tex}
 %\includeonly{capitulos/titulo,capitulos/certificacion,capitulos/xestiondoproxecto,capitulos/analise,capitulos/apendiceb}

@@ -79,6 +79,21 @@
 	%Se referencia con \ref{req:#1}.
 }
 
+%PROBAS
+\newcounter{testcnt}
+\newcommand{\testtable}[5]{
+	\renewcommand{\thetestcnt}{#1}
+	\refstepcounter{testcnt}
+	~\\
+	\noindent\colorbox{gray!20}{\parbox{\textwidth}{\hspace{0.4cm}\textsc{{#1}.- {#2}}}}\label{test:#1}
+	\begin{description}[style=multiline,labelindent=0.4cm,leftmargin=4.5cm,itemsep=1pt, partopsep=10pt]
+ 	\item[Requirimentos relacionados] #3 
+ 	\item[Descrición] #4
+ 	\item[Resultado] #5 
+	\end{description}
+	%Se referencia con \ref{test:#1}.
+}
+
 %----------------------------------------------------------------------------------------
 %	HYPHENATION
 %----------------------------------------------------------------------------------------
