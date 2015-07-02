@@ -1,2 +1,25 @@
 \chapter{Conclusións e traballo futuro}
-TODO-Conclusións e posibles ampliacións-
+
+Para finalizar, neste capítulo descríbense as conclusións da realización do proxecto e apúntanse varias liñas de traballo futuro para a ampliación do mesmo.
+
+\section{Conclusións}
+O obxectivo deste traballo foi o desenvolvemento dun \emph{plugin}, para o sistema de información xeográfica de código aberto QGIS, que permitise obter datos de observacións de servidores que soporten o estándar Sensor Observation Service versión 1.0 definido polo Open Geospatial Consortium. O traballo xustificase no interese de permitir explotar e analizar os datos da información recollida por unha ampla variedade de sensores a través do uso do gran abano de ferramentas que proporciona un sistema de información xeográfica de propósito xeral.
+
+Ata o momento non existen solucións deste estilo no eido do software libre, nin ningunha solución madura entre os sistemas propietarios. Debido a esta escaseza de solucións consideramos que este traballo abre unhas posibilidades ata o momento inexistentes dentro do seu campo de aplicación.
+
+A maior dificultade coa que nos topamos durante o proxecto foi a escasa dispoñibilidade de servidores SOS accesibles publicamente e o baixo nivel de madurez dos mesmos, e por tanto do estándar. As poucas implementacións atopadas presentan pequenas diferencias entre si que limitan a interoperabilidade do \emph{plugin}.
+
+Os obxectivos do traballo pódense dar por cumpridos ó producir un software completamente funcional que satisfai as necesidades plantexadas inicialmente, e adicionalmente, coa inclusión do \emph{plugin} oficial de QGIS.
+
+A inclusión no repositorio oficial pon o \emph{plugin} a disposición da ampla e activa comunidade de desenvolvedores e usuarios de QGIS.
+
+\section{Traballo futuro}
+En canto ás posibilidades de evolución da ferramenta, a ampliación que maior valor aportaría sería dar cobertura o maior número de implementacións posible do estándar, e a versión 2.0 do mesmo. Unha das posibilidades para que o procesador de XML sexa capaz de soportar as pequenas diferencias entre implementacións do estándar sería permitir que sexa parametrizable polo usuario, de xeito que poda indicar, por exemplo, o nome da propiedade a usar como campo de tempo ou a etiqueta XML que contén o identificador da entidade.
+
+Outra área de mellora na compoñente de interacción co SOS sería dotar á interface gráfica de máis posibilidades á hora de definir os filtros a aplicar para obter as observacións, permitindo, por exemplo, usar xeometrías de outras capas como filtro espacial.
+
+Tamén sería interesante a posibilidade de que a petición \emph{GetObservations} se puidese executar de xeito periódico cada poucos segundos, ou minutos, actualizando a capa en vez de crear unha nova. Esta funcionalidade permitiría traballar con datos en tempo case real visualizando e actualizando constantemente as últimas observacións realizadas.
+
+En canto á xeración de gráficas, unha mellora importante sería poder visualizar varias propiedades simultaneamente en dúas gráficas que comparan un eixo, de modo que se poida ver a evolución temporal de dúas propiedades o mesmo tempo que a relación entre elas.
+
+A parte de estas ampliacións propostas, existirán outras moitas que xurdan do uso do \emph{plugin} nun contorno real, por usuarios que o usen como ferramenta para resolver os seus problemas específicos.

@@ -14,7 +14,7 @@ Os requisitos funcionais que se inclúen na pila do primeiro sprint son:
 
 Neste ciclo de desenvolvemento levouse a cabo o deseño inicial da interface gráfica para a ventá de conexión co servidor SOS, seguindo como guía as ventás dispoñibles de xeito nativo no QGIS para descargar datos de outros servizos similares (WFS, WMS, WCS), co obxectivo de satisfacer o requisito \ref{req:RNF.03}.
 
-Outra tarefa importante levada a cabo foi a definición dunha estrutura extensible para o módulo de procesamento do XML, de xeito que sexa sinxelo engadir as distintas que vaian aparecendo, debido a gran liberdade que dan os estándares SOS e Observations&Measurements. Tamén se analizaron distintas posibilidades para o procesamento do XML en Python, sendo todas elas moi similares en canto a funcionalidade optouse por empregar a módulo para XML das propias librerías Qt para non engadir dependencias innecesarias.
+Outra tarefa importante levada a cabo foi a definición dunha estrutura extensible para o módulo de procesamento do XML, de xeito que sexa sinxelo engadir as distintas que vaian aparecendo, debido a gran liberdade que dan os estándares SOS e Observations\&Measurements. Tamén se analizaron distintas posibilidades para o procesamento do XML en Python, sendo todas elas moi similares en canto a funcionalidade optouse por empregar a módulo para XML das propias librerías Qt para non engadir dependencias innecesarias.
 
 Tamén se preparou durante este sprint o entorno para a automatización das probas unitarias a través da ferramenta \emph{PyUnit} e programáronse varios casos de probas para o módulo de procesamento de XML en base a ficheiros de exemplo.
 
@@ -52,18 +52,91 @@ Na pila do segundo sprint inclúense os seguintes requisitos funcionais:
 \item \ref{req:RF.03}.- Visualizar XML das capacidades do servidor
 \item \ref{req:RF.05}.- Permitir filtrado básico das observacións a descargar
 \item \ref{req:RF.07}.- Xerar petición de observacións manualmente
-\item \ref{req:RF.08}.- Xerar gráfica propiedade vs tempo
 \item \ref{req:RF.11}.- Xerar animación no visor de mapas
+\item \ref{req:RF.08}.- Xerar gráfica propiedade vs tempo
 \end{itemize}
 
-TODO: Describir as tarefas máis relevantes, as probas realizadas e os casos de uso cubertos ó finalizar o sprint.
+No segundo ciclo de sprint conclúese o módulo de procesamento XML para interpretar correctamente todos os datos das observacións resultado da operación \emph{GetObservations}, tanto co modelo \emph{Observations} como co \emph{Measurements}. Amais comprobase que requisitos debe cumprir a capa para poder ser xestionada a través do plugin \emph{TimeManager}, e impleméntase o proceso de creación da capa tendo en conta estes requisitos.
 
+Tamén se implementan os filtros básicos de observacións, e por ser de utilidade para o proceso de desenvolvemento e probas tamén se implementa a visualización do XML do das capacidades do servidor e a posibilidade de visualizar e editar o XML xerado para a petición de observacións.
+
+En canto a xeración de gráficas realízanse varias probas coa librería matplotlib e deseñase a estrutura de clases.
+
+Co obxectivo de validar o incremento xerado leváronse a cabo as seguintes probas:
+
+\testtable{PR.04}{Procesamento de XML con observacións en formato \emph{Observations} e \emph{Measurements}}
+		  {\begin{itemize}\item \ref{req:RF.04} \\\end{itemize}} %Requerimentos
+		  {Codifícanse probas unitarias para a validación do módulo de procesamento so XML de observacións nos dous formatos, en base a ficheiros de exemplos dos servidores SOS do CiTIUS.} %Descripción
+		  {\begin{itemize}
+		  \item O XML procesase correctamente, detectando os campos de tipo tempo, os numéricos e as cadeas de texto.
+		  \item A partir da estrutura de datos xerada a partir do XML crease correctamente unha capa vectorial no QGIS, con todos os campos contidos na observación e cos valores correctos.
+		  \end{itemize}} %Resultado
+
+\testtable{PR.05}{Xeración de filtros para \emph{GetObservations}}
+		  {\begin{itemize}\item \ref{req:RF.03} \item \ref{req:RF.05} \item \ref{req:RF.07}\end{itemize}} %Requerimentos
+		  {Comprobar que os obxectos de interface conteñen os valores correctos segundo as capacidades do SOS e que o XML que se xera a través das distintas opcións de interface é válido.} %Descripción
+		  {\begin{itemize}
+		  \item Comprobase conectando con varios servidores que as opcións habilitadas nas distintas lapelas de filtros se corresponden coas capacidades definidas no XML.
+		  \item A lista de sensores seleccionados e a de entidades de interese, así como o operador e operandos dos filtros de tempo se xeran correctamente no XML para a petición \emph{GetObservations}.
+		  \end{itemize}} %Resultado
+
+\testtable{PR.06}{Xestionar capa co \emph{TimeManager}}
+		  {\begin{itemize}\item \ref{req:RF.04} \item \ref{req:RF.11} \end{itemize}} %Requerimentos
+		  {Comprobar o correcto funcionamento do plugin \emph{TimeManager} coa capa creada.} %Descripción
+		  {\begin{itemize}
+		  \item Comprobase que a capa se engada a lista das xestionadas polo TimeManager de xeito satisfactorio.
+		  \item Verificase que o campo de tempo se interpreta correctamente.
+		  \item Comprobase o funcionamento xeral do \emph{TimeManager} con varias capas de observacións.
+		  \end{itemize}} %Resultado
+		  
+\testtable{PR.07}{Gráfica tempo \emph{vs} propiedade}
+		  {\begin{itemize}\item \ref{req:RF.08} \\\end{itemize}} %Requerimentos
+		  {Xerar gráfica co tempo no eixo X e a propiedade no Y.} %Descripción
+		  {\begin{itemize}
+		  \item A gráfica contén todas as observacións co mesmo \emph{foi} que a entidade seleccionada no mapa.
+		  \item As observacións ordénanse polo campo tempo de xeito que se podan trazar unha liña que as una.
+		  \item Ós valores do eixo X dáselles formato de tempo.
+		  \end{itemize}} %Resultado
+		  
+Tendo en conta a matriz de trazabilidade do cadro \ref{tab:trazaRequisitos}, con este segundo incremento cúbrense os casos de uso \ref{uc:CU.01} e \ref{uc:CU.04}.
+		  
 \section{Sprint 3}
-
+Na pila do terceiro sprint inclúense os seguintes requisitos funcionais:
 \begin{itemize}
 \item \ref{req:RF.06}.- Permitir filtrado avanzado das observacións a descargar
 \item \ref{req:RF.09}.- Xerar gráfica para enfrontar dúas propiedades
 \item \ref{req:RF.10}.- Xerar gráfica con varias series
 \end{itemize}
 
-TODO: Describir as tarefas máis relevantes, as probas realizadas e os casos de uso cubertos ó finalizar o sprint.
+Neste incremento habilítase a ferramenta para introducir o filtro espacial seleccionando a xeometría directamente sobre o mapa, segundo o tipo de operando seleccionado.
+
+Tamén se modifica a visualización de gráficas para permitir seleccionar as propiedades a visualizar, traballar con varias \emph{foi} seleccionadas e permitir modificar os estilos e textos da gráfica.
+
+Co obxectivo de validar o incremento xerado leváronse a cabo as seguintes probas:
+
+\testtable{PR.08}{Filtros espaciais}
+		  {\begin{itemize}\item \ref{req:RF.06} \\\end{itemize}} %Requerimentos
+		  {Comprobar o correcto funcionamento da ferramenta de selección de xeometrías e a inclusión no XML do filtro correspondente.} %Descripción
+		  {\begin{itemize}
+		  \item A ferramenta de selección permite seleccionar rectángulos (indicando dous puntos), polígonos, liñas e puntos.
+		  \item A xeometría debuxada no mapa transformase correctamente ó formato GML e inclúese no XML para a petición \emph{GetObservations}.
+		  \end{itemize}} %Resultado
+		  
+\testtable{PR.09}{Xeración de gráficas con varias series}
+		  {\begin{itemize}\item \ref{req:RF.10} \\\end{itemize}} %Requerimentos
+		  {Compróbanse a xeración de gráficas a partir de varias entidades seleccionadas, de forma que cada \emph{foi} teña un estilo distinto.} %Descripción
+		  {\begin{itemize}
+		  \item Permítese xerar a gráfica con varias entidades seleccionadas. E para cada \emph{foi} distinto ordénanse os datos e debúxase a liña con unha cor distinta.
+		  \item Permítese modificar a cor e estilo de cada liña e dos marcadores.
+		  \end{itemize}} %Resultado
+		  
+\testtable{PR.10}{Personalización das propiedades das gráficas}
+		  {\begin{itemize}\item \ref{req:RF.09} \\\end{itemize}} %Requerimentos
+		  {Verificar que se poden modificar as distintas propiedades da gráfica, incluídas a propiedade a representar en cada eixo.} %Descripción
+		  {\begin{itemize}
+		  \item Pódense seleccionar o campo da capa a usar no eixo X e no eixo Y, así como por cal dos dous ordenar os datos para trazar liñas.
+		  \item Permítese modificar os límites dos eixos X e Y manualmente.
+		  \item Pódense modificar outras propiedades da gráfica como o título, as etiquetas e o formato de tempo.
+		  \end{itemize}} %Resultado
+		  
+Tendo en conta a matriz de trazabilidade do cadro \ref{tab:trazaRequisitos}, con este terceiro incremento a aplicación permite levar a cabo os catro casos de uso definidos.
