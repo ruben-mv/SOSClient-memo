@@ -42,22 +42,17 @@
 }
 
 \input{options.tex}
-%\includeonly{capitulos/titulo,capitulos/certificacion,capitulos/xestiondoproxecto,capitulos/analise,capitulos/apendiceb}
 
 \begin{document}
 %%Se reeditan estas funciones para sacar el texto en gallego usando el idioma spanish, porque galician no funciona con hyperref
 \renewcommand{\contentsname}{Índice xeral}
 \renewcommand{\listtablename}{Índice de cadros}
 \renewcommand{\tablename}{Cadro} 
-\include{capitulos/titulo}
-\cleardoublepage
-\include{capitulos/certificacion} % paxina de certificación (optativa)
-%\cleardoublepage
-%\include{capitulos/agradecementos} % paxina de agradecementos (optativa) 
-\cleardoublepage
-\include{capitulos/resumo} % páxina de resumo (optativa) 
+\include{capitulos/titulo}\cleardoublepage
+\include{capitulos/certificacion}\cleardoublepage % paxina de certificación (optativa)
+%\include{capitulos/agradecementos}\cleardoublepage % paxina de agradecementos (optativa) 
+\include{capitulos/resumo}\cleardoublepage % páxina de resumo (optativa) 
 
-\cleardoublepage
 \pagestyle{plain}
 \tableofcontents
 \listoffigures
