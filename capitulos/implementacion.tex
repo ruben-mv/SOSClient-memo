@@ -1,8 +1,8 @@
-\chapter{Implementación e probas}
+\chapter{Desenvolvemento dos sprints}
 
-A implementación deste proxecto consta de tres ciclos de sprint nos que se desenvolven as dúas compoñentes nas que está dividido. Cada un dos sprints consta das fase de análise, deseño, implementación e probas. Dado que a análise e o deseño se describiron por completo nos capítulos 3 e 4, neste capítulo detallaranse a implementación e probas realizadas para validar os requisitos planificados en cada un dos sprints.
+A implementación deste proxecto consta de tres ciclos de sprint nos que se desenvolven as dúas compoñentes nas que está dividido. Cada un dos sprints consta das fase de análise, deseño, implementación e probas. Dado que a análise se describiu por completo no capítulo 2, neste capítulo detallaranse o deseño, implementación e probas realizadas para validar os requisitos planificados en cada un dos sprints.
 
-A previsión inicial do contido de cada sprint está recollida no cadro \ref{tab:previsionSprints}, no capítulo de Xestión do proxecto. Neste apartado describirase xa a pila de cada sprint en base ós requisitos definidos, é dicir, o resultado da planificación do sprint. Cabe destacar que para a planificación do sprint non so se ten en conta a relevancia asignada a cada requisito, se non tamén o tempo estimado para levalo a cabo e a súa repercusión no cumprimento dos requisitos non funcionais.
+A previsión inicial do contido de cada sprint está recollida no cadro \ref{tab:previsionSprints}, no capítulo de Xestión do proxecto. Neste apartado describirase xa a pila de cada sprint en base ós requisitos definidos, é dicir, o resultado da planificación do sprint. Cabe destacar que para a planificación do sprint non só se ten en conta a relevancia asignada a cada requisito, se non tamén o tempo estimado para levalo a cabo e a súa repercusión no cumprimento dos requisitos non funcionais.
 
 \section{Sprint 1}
 Os requisitos funcionais que se inclúen na pila do primeiro sprint son:
@@ -14,9 +14,29 @@ Os requisitos funcionais que se inclúen na pila do primeiro sprint son:
 
 Neste ciclo de desenvolvemento levouse a cabo o deseño inicial da interface gráfica para a ventá de conexión co servidor SOS, seguindo como guía as ventás dispoñibles de xeito nativo no QGIS para descargar datos de outros servizos similares (WFS, WMS, WCS), co obxectivo de satisfacer o requisito \ref{req:RNF.03}.
 
-Outra tarefa importante levada a cabo foi a definición dunha estrutura extensible para o módulo de procesamento do XML, de xeito que sexa sinxelo engadir as distintas que vaian aparecendo, debido a gran liberdade que dan os estándares SOS e Observations\&Measurements. Tamén se analizaron distintas posibilidades para o procesamento do XML en Python, sendo todas elas moi similares en canto a funcionalidade optouse por empregar a módulo para XML das propias librerías Qt para non engadir dependencias innecesarias.
+Outra tarefa importante levada a cabo foi a definición dunha estrutura extensible para o módulo de procesamento do XML, de xeito que sexa sinxelo engadir as distintas que vaian aparecendo, debido a gran liberdade que dan os estándares SOS e \emph{Observations and Measurements}. Tamén se analizaron distintas posibilidades para o procesamento do XML en Python, sendo todas elas moi similares en canto a funcionalidade optouse por empregar a módulo para XML das propias librerías Qt para non engadir dependencias innecesarias.
 
-Tamén se preparou durante este sprint o entorno para a automatización das probas unitarias a través da ferramenta \emph{PyUnit} e programáronse varios casos de probas para o módulo de procesamento de XML en base a ficheiros de exemplo.
+No diagrama \ref{fig:diaClassSOSClient} represéntanse o deseño de clases realizado, que se corresponde coa compoñente SOSClient. Móstranse só os atributos e métodos máis relevantes para entender a función de cada clase, que se representan separadas entre vista e modelo. Agrupadas sobre fondo escuro represéntanse as clases encargadas do procesamento dos documentos XML proporcionados polo servizo SOS.
+
+\begin{sidewaysfigure}
+ \centering
+ \includegraphics[width=\textwidth]{images/clases_sos_client.eps}
+ \caption{Diagrama de clases da compoñente SOS Client}
+ \label{fig:diaClassSOSClient}
+\end{sidewaysfigure}
+
+As clases máis relevantes da figura \ref{fig:diaClassSOSClient} son:
+\begin{description}
+\item[WidgetFactory:] Esta clase é unha factoría que crea a partir dos XML de definición da interface a clase cos compoñentes gráficos. A implementación real da vista farase en clases que herdarán da clase correspondente creada por esta factoría.
+\item[SOSClientDialog:] É o formulario xeral de comunicación cos servidores SOS. Contén a lóxica de funcionamento da vista e as chamadas necesarias as clases que forman o modelo.
+\item[SensorObservationService:] Esta clase representa o servizo SOS. Créase a partir do XML que define as capacidades do servizo e almacena toda a información necesaria para que a vista poda presentar o usuario as opcións correspondentes para xerar as consultas.
+\item[ObservationsLayer:] Esta clase é a encargada de construír a capa vectorial para o QGIS, a partir da clase SOSProvider.
+\item[SOSProvider:] Simula unha clase QgsVectorDataProvider\footnote{\url{http://qgis.org/api/classQgsVectorDataProvider.html}}. É pois a clase que fai de intermediaria entre a estrutura de datos real da información da capa e a estrutura manexada polo QGIS.
+\item[XMLParserFactory:] Esta clase é unha factoría para crear as distintas clase para o procesamento dos XML. A partir da etiqueta XML atopada devolve a clase encargada de procesar o nodo.
+\item[XMLParser:] Clase base para todas as clases de procesamento de XML.
+\end{description}
+
+Tamén se preparou durante este sprint o entorno para a automatización das probas unitarias a través da ferramenta \emph{PyUnit}\footnote{\url{https://docs.python.org/2/library/unittest.html}} e programáronse varios casos de probas para o módulo de procesamento de XML en base a ficheiros de exemplo.
 
 Co obxectivo de validar o incremento xerado leváronse a cabo as seguintes probas:
 
@@ -60,7 +80,7 @@ No segundo ciclo de sprint conclúese o módulo de procesamento XML para interpr
 
 Tamén se implementan os filtros básicos de observacións, e por ser de utilidade para o proceso de desenvolvemento e probas tamén se implementa a visualización do XML do das capacidades do servidor e a posibilidade de visualizar e editar o XML xerado para a petición de observacións.
 
-En canto a xeración de gráficas realízanse varias probas coa librería matplotlib e deseñase a estrutura de clases.
+En canto a xeración de gráficas realízanse varias probas coa librería matplotlib.
 
 Co obxectivo de validar o incremento xerado leváronse a cabo as seguintes probas:
 
@@ -110,8 +130,22 @@ Na pila do terceiro sprint inclúense os seguintes requisitos funcionais:
 
 Neste incremento habilítase a ferramenta para introducir o filtro espacial seleccionando a xeometría directamente sobre o mapa, segundo o tipo de operando seleccionado.
 
-Tamén se modifica a visualización de gráficas para permitir seleccionar as propiedades a visualizar, traballar con varias \emph{foi} seleccionadas e permitir modificar os estilos e textos da gráfica.
+Tamén se modifica a visualización de gráficas para permitir seleccionar as propiedades a visualizar, traballar con varias \emph{foi} seleccionadas e permitir modificar os estilos e textos da gráfica. Esta tarefa implica o deseño tanto da interface gráfica como da estrutura de clases da compoñente SOSPlot, que se representa no diagrama \ref{fig:diaClassSOSPlot}. Móstranse agrupadas todas as clases que cumpren co rol de \emph{Delegate}. As demais correspóndense coa vista, pois o modelo da compoñente SOSPlot está soportado por clases internas do QGIS (QgsVectorLayer) e de matplotlib (Line2D).
 
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{images/clases_sos_plot.eps}
+ \caption{Diagrama de clases da compoñente SOS Plot}
+ \label{fig:diaClassSOSPlot}
+\end{figure}
+
+As clases máis relevantes da figura \ref{fig:diaClassSOSPlot} son:
+\begin{description}
+\item[WidgetFactory:] Factoría para a xeración das compoñentes gráficas.
+\item[SOSPlotDialog:] É o formulario de visualización de gráficos. Filtra e transforma os datos da capa vectorial activa para visualizalos no QMplWidget e conecta os distintos \emph{Delegates} co modelo.
+\item[QMplWidget:] Clase que amalgama os obxectos da librería matplotlib para a visualización de gráficos.
+\end{description}
+\newpage
 Co obxectivo de validar o incremento xerado leváronse a cabo as seguintes probas:
 
 \testtable{PR.08}{Filtros espaciais}
