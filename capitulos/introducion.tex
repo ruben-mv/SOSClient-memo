@@ -16,15 +16,15 @@ As observacións de fenómenos medioambientais son, polo tanto, un tipo de infor
 
 Un SIX é un sistema deseñado para capturar, almacenar, manipular, analizar e presentar calquera tipo de información xeograficamente referenciada. Dentro do software SIX distínguense varios grandes grupos segundo o seu propósito, como poden ser sistemas de xestión de bases de datos espaciais, servidores cartográficos, visores web, móbiles ou de escritorio. Dentro deste último grupo, os SIX de escritorio, inclúense un amplo número de programas que permiten visualizar, editar e analizar datos xeográficos e que se empregan en moitos eidos e con moi diversos fins, por exemplo para investigacións científicas, meteoroloxía, cartografía, hidroloxía, xestión de recursos, marketing, loxística, avaliación do impacto ambiental, etc.
 
-Os SIX traballan principalmente con dous formatos de información, segundo os obxectos do mundo real que se vaian representar sexan de natureza continua ou discreta. Así pois, para representar unha variable de natureza continua, como por exemplo un mapa da elevación do terreo, empregase o formato raster, que divide o espazo en celas regulares asociando un valor a cada unha delas. Pola contra, para representar obxectos de natureza discreta, como pode ser un río, emprégase xeralmente o formato vectorial, no que se representa a xeometría en base a puntos, liñas ou polígonos, e se lle asocian a esta xeometría os atributos e valores que sexan necesarios. Cabe destacar que estes dous formatos poden converterse entre si se en función da análise a realizar, por exemplo, en base ás observacións de temperaturas en determinados puntos pódese xerar por interpolación un raster que represente o mapa térmico da zona (rasterización), ou pola contra, a partir dun mapa de elevación pódense trazar as curvas de nivel que o representan (vectorización).
+Os SIX traballan principalmente con dous formatos de información, segundo os obxectos do mundo real que se vaian representar sexan de natureza continua ou discreta. Así pois, para representar unha variable de natureza continua, como por exemplo un mapa da elevación do terreo, empregase o formato raster, que divide o espazo en celas regulares asociando un valor a cada unha delas. Pola contra, para representar obxectos de natureza discreta, como pode ser un río, emprégase xeralmente o formato vectorial, no que se representa a xeometría en base a puntos, liñas ou polígonos, e se lle asocian a esta xeometría os atributos e valores que sexan necesarios. Cabe destacar que estes dous formatos poden converterse entre si en función da análise a realizar, por exemplo, en base ás observacións de temperaturas en determinados puntos pódese xerar por interpolación un raster que represente o mapa térmico da zona (rasterización), ou pola contra, a partir dun mapa de elevación pódense trazar as curvas de nivel que o representan (vectorización).
 
 En canto ás ferramentas de análise proporcionadas polos paquetes SIX, existe unha moi ampla gama de técnicas que se desenvolveron principalmente no último medio século, e é un campo que cambia rapidamente na actualidade, incluíndose cada vez máis e máis ferramentas, ben proporcionadas polo propio provedor orixinal do software ou en moitos casos desenvolvidas por terceiros a través das posibilidades de ampliación que os propios programas SIX poñen a disposición dos desenvolvedores.
 
-Na maioría dos SIX o modelado dos fenómenos xeográficos realizase de forma estática, sen embargo na actualidade requírense modelos que engadan o tempo como variable, de xeito que permitan observar o comportamento dinámico dos eventos xeográficos, como por exemplo no caso das observacións de fenómenos medioambientais. Os SIX que incorporan a representación do tempo, amais das dimensións espaciais, denomínanse SIX temporais e permiten facer unha representación da información en 4D, o que abre un amplo abano de posibilidades. A incorporación da compoñente temporal é un dos aspectos o que máis esforzos se están a adicar actualmente, no que a evolución dos SIX se refire.
+Na maioría dos SIX o modelado dos fenómenos xeográficos realizase de forma estática, sen embargo na actualidade requírense modelos que engadan o tempo como variable, de xeito que permitan observar o comportamento dinámico dos eventos xeográficos, como por exemplo no caso das observacións de fenómenos medioambientais. Os SIX que incorporan a representación do tempo, amais das dimensións espaciais, denomínanse SIX temporais e permiten facer unha representación da información en 4D, o que abre un amplo abano de posibilidades. A incorporación da compoñente temporal é un dos aspectos ó que máis esforzos se están a adicar actualmente, no que á evolución dos SIX se refire.
 
 \section{Motivación e Obxectivos}
 
-Na actualidade, a area de análise e explotación da información obtida a través das observacións medioambientais está moi fragmentada. Cada organismo ou axencia desenvolve as súas propias solucións para a captación, o almacenamento e a análise das cada vez máis amplas redes de sensores despregadas por todo o planeta. Este feito supón unha gran limitación en canto ó aproveitamento de toda esta información, o restrinxir o acceso á mesma as organizacións que dispoñen dos recursos necesarios para desenvolver e implantar os sistemas necesarios.
+Na actualidade, a área de análise e explotación da información obtida a través das observacións medioambientais está moi fragmentada. Cada organismo ou axencia desenvolve as súas propias solucións para a captación, o almacenamento e a análise das cada vez máis amplas redes de sensores despregadas por todo o planeta. Este feito supón unha gran limitación en canto ó aproveitamento de toda esta información, o restrinxir o acceso á mesma as organizacións que dispoñen dos recursos necesarios para desenvolver e implantar os sistemas necesarios.
 
 O estándar SOS pretende permitir a interoperabilidade entre os sistemas encargados de captar e almacenar esta información e os sistemas empregados para a análise da mesma, non obstante o grao de implantación deste estándar é aínda reducido. Como motivo, ou consecuencia, deste baixo grao de implantación existen na actualidade moi poucos sistemas de información xeográfica que inclúan o servizo SOS como unha fonte de datos soportada, a diferenza de outros estándares desenvolvidos polo OGC que son soportados pola ampla maioría dos sistemas, como o Web Map Service (WMS) ou o Web Feature Service (WFS).
 
@@ -36,7 +36,7 @@ O obxectivo deste traballo é o desenvolvemento dunha extensión para a ferramen
 
 \section{Entorno tecnolóxico}
 \subsection{QGIS}
-QGIS é un Sistema de Información Xeográfica de escritorio multiplataforma, libre e de código aberto. É un proxecto oficial da organización non gubernamental Open Source Geospatial Foundation\footnote{\url{http://www.osgeo.org/}} (OSGeo) nacido no ano 2002 co obxectivo principal de proporcionar unha ferramenta que permitise visualizar, editar e analizar datos xeográficos en calquera ordenador persoal.
+QGIS é un Sistema de Información Xeográfica de escritorio multiplataforma, libre e de código aberto. É un proxecto oficial da organización non gobernamental Open Source Geospatial Foundation\footnote{\url{http://www.osgeo.org/}} (OSGeo) nacido no ano 2002 co obxectivo principal de proporcionar unha ferramenta que permitise visualizar, editar e analizar datos xeográficos en calquera ordenador persoal.
 
 Amais de proporcionar de por si soporte para un amplo número de formatos de datos e funcionalidades para operar cos mesmos, QGIS proporciona unha API completa para implementación de \emph{plugins} que amplíen a funcionalidade da ferramenta e os formatos de información xeográficos soportados. Os \emph{plugins} poden programarse en C++ ou en Python, e no caso de cumprir a normativa e ser aprobados polos responsables poden incluírse no repositorio oficial da aplicación, de xeito que se podan instalar directamente dende o propio QGIS.
 
@@ -72,7 +72,7 @@ A figura \ref{fig:uml-sos} representa a interacción entre un consumidor e os se
 \end{figure}
 
 \subsection{Observations and Measurements}
-O estándar Observations and Measurements\footnote{\url{http://www.opengeospatial.org/standards/om}} define o modelo de datos e a súa codificación XML para a representación de observacións medioambientais. Define polo tanto modelos de documentos para o intercambio de información que describe o proceso de observación e os seus resultados entre diferentes comunidades técnicas e científicas.
+O estándar Observations and Measurements\footnote{\url{http://www.opengeospatial.org/standards/om}} define o modelo de datos e a súa codificación XML para a representación de observacións medioambientais. Define polo tanto modelos de documentos para o intercambio de información, tanto de descrición do proceso de observación coma os seus resultados, entre diferentes comunidades técnicas e científicas.
 
 Constitúe unha dependencia esencial para o estándar SOS.
 
@@ -92,24 +92,24 @@ Segundo o modelo, unha observación é un evento que estima unha propiedade obse
 \item[Feature Of Interest:] Representa a entidade de interese ou área observada. Por exemplo, unha estación meteorolóxica. 
 \item[Property:] Representa o fenómeno físico observado. Existen varios tipos, sendo o máis habitual o \emph{Measurement}, que é a combinación de un valor numérico real con unha unidade de medida. Por exemplo, a temperatura.
 \item[Process:] Describe o proceso empregado para xerar o resultado. Pode ser un sensor, un conxunto de sensores, un algoritmo, etc. Por exemplo, un termómetro; ou ben, un algoritmo de agregación que calcule temperaturas medias, mínimas e máximas para un día.
-\item[Result:] É o valor obtido para a propiedade observada na entidade de interese, obtido aplicando o procedemento indicado. Por exemplo, o rexistro de temperatura media para unha estación meteorolóxica nun día concreto.
+\item[Result:] É o valor para a propiedade observada na entidade de interese, obtido aplicando o procedemento especificado. Por exemplo, o rexistro de temperatura media para unha estación meteorolóxica nun día concreto.
 \end{description}
 
 \section{Estrutura da memoria}
 
 Este documento estrutúrase en 6 capítulos, un apéndice e a bibliografía empregada.\\
 
-Neste capítulo de introdución descríbese a motivación e obxectivos do proxecto e contextualizase o mesmo describindo brevemente os conceptos empregados e a situación actual da técnica nas areas de coñecemento relacionadas.\\
+Neste capítulo de introdución descríbese a motivación e obxectivos do proxecto e contextualizase o mesmo describindo brevemente os conceptos empregados e a situación actual da técnica nas áreas de coñecemento relacionadas.\\
 
 No capítulo 2 abórdanse os aspectos relativos á xestión do proxecto: a definición do alcance, a metodoloxía, planificación temporal e xestión de riscos e da configuración.\\
 
-No capítulo 3 detállase a análise do software, describindo os casos de uso identificados e os requisitos extraídos dos mesmos.\\
+No capítulo 3 detállase a análise do software, describindo os casos de uso identificados e os requisitos extraidos dos mesmos.\\
 
-No capítulo 4 descríbese o deseño do software, tanto a arquitectura do mesmo como o comportamento de cada unha das compoñentes.\\
+No capítulo 4 descríbese o deseño do software, tanto a arquitectura do mesmo como o comportamento de cada unha das compoñentes para satisfacer os casos de uso definidos.\\
 
-No capítulo 5 documéntase en orde cronolóxico o proceso de deseño e implementación, así como as probas realizadas para cumprir os requisitos establecidos.\\
+No capítulo 5 documéntase, en orde cronolóxico, o proceso de deseño e implementación, así como as probas realizadas para cumprir e validar os requisitos establecidos.\\
 
-No capítulo 6 expóñense as conclusións extraídas de todo o proxecto e detállanse varias propostas de traballo futuro.\\
+No capítulo 6 expóñense as conclusións extraidas da realización do proxecto e detállanse varias propostas de traballo futuro.\\
 %\item[Apéndice A:] \textit{Manual técnico.}
 
 O apéndice A é unha guía para a instalación e manexo básico do \emph{plugin} desenvolvido.\\

@@ -1,8 +1,8 @@
 \chapter{Deseño do software}
-Neste capítulo descríbese a arquitectura do sistema a desenvolver desde un punto de vista global, identificando as distintas compoñentes que o conforman e a forma de relacionarse entre elas, tanto dende o punto de vista estrutural como desde o punto te vista interacción entre elas.
+Neste capítulo descríbese a arquitectura do sistema a desenvolver desde un punto de vista global, identificando as distintas compoñentes que o conforman e a forma de relacionarse entre elas, tanto dende o punto de vista estrutural como de interacción entre elas.
 
 \section{Arquitectura do sistema}
-Dende a definición dos obxectivos do proxecto identifícanse dúas partes diferenciadas dentro do sistema a desenvolver. Por un lado a comunicación co servidor SOS, para a obtención das súas capacidades e dos datos de observacións, e por outro a visualización e explotación das observacións descargadas. Esta división trasladase directamente á estrutura da aplicación, que se amosa na figura \ref{fig:diaComponentes}, na que tamén se inclúen os compoñentes externos cos que se relacionan.
+Dende a definición dos obxectivos do proxecto identifícanse dúas partes diferenciadas dentro do sistema a desenvolver. Por un lado a comunicación co servidor SOS, para a obtención das súas capacidades e dos datos de observacións, e por outro a visualización e explotación das observacións descargadas. Esta división trasladase directamente á estrutura da aplicación, que se amosa na figura \ref{fig:diaComponentes}. Tamén se inclúen os compoñentes externos cos que se relacionan.
 
 \begin{figure}[hbtp]
  \centering
@@ -11,14 +11,14 @@ Dende a definición dos obxectivos do proxecto identifícanse dúas partes difer
  \label{fig:diaComponentes}
 \end{figure}
 
-A compoñente \textbf{SOS Client} é a responsable da comunicación co servidor SOS tanto a hora de xerar as peticións necesarias a partir da información proporcionada polo usuario e como para almacenar e interpretar as respostas do servizo.
+A compoñente \textbf{SOS Client} é a responsable da comunicación co servidor SOS tanto á hora de xerar as peticións necesarias a partir da información proporcionada polo usuario, como para almacenar e interpretar as respostas do servizo.
 
 A compoñente \textbf{SOS Plot} é a responsable de, a partir da capa vectorial xerada, visualizar as observacións segundo as preferencias indicadas polo usuario.
 
 As compoñentes externas incluídas no diagrama son:
 \begin{itemize}
 \item QGIS: Representa á aplicación na que se integra o \emph{plugin}.
-\item TimeManager\footnote{\url{https://plugins.qgis.org/plugins/timemanager/}}: É un \emph{plugin} para QGIS que engade controles de tempo o mesmo, de xeito que se podan animar as capas vectoriais directamente no visor de mapas, en base a un atributo de tempo.
+\item TimeManager\footnote{\url{https://plugins.qgis.org/plugins/timemanager/}}: É un \emph{plugin} para QGIS que engade controles de tempo ó mesmo, de xeito que se podan animar as capas vectoriais directamente no visor de mapas, en base a un atributo de tempo.
 \item matplotlib\footnote{\url{http://matplotlib.org/}}: É unha librería de Python para debuxar gráficos en 2D que permite producir figuras de alta calidade, tanto para publicacións como en entornos interactivos.
 \end{itemize}
 
@@ -47,7 +47,7 @@ Na figura \ref{fig:MVCvsMV} móstrase de xeito gráfico a diferencia entre o pat
 \section{Interacción entre compoñentes}
 Para describir o comportamento do sistema desde un punto de vista dinámico empréganse os diagramas de secuencia, nos que se describe a interacción entre as distintas compoñentes do sistema para cumprir cada caso de uso definido.
 
-Para conseguir un nivel de detalle suficiente para describir o comportamento do sistema dividisen as compoñentes segundo a arquitectura proposta. A compoñente SOSClient divídese en SOSClientDialog, que representa a vista, e Sensor Observation Service, que representa o modelo. No caso da compoñente SOSPlot, a vista é representada pola compoñente SOSPlotDialog e o modelo non se representa de xeito independente pois está incluído dentro da compoñente matplotlib.
+Para conseguir un nivel de detalle suficiente para describir o comportamento do sistema dividisen as compoñentes segundo a arquitectura \emph{Model/View} proposta. A compoñente SOSClient divídese en SOSClientDialog, que representa a vista, e Sensor Observation Service, que representa o modelo. No caso da compoñente SOSPlot, a vista é representada pola compoñente SOSPlotDialog e o modelo non se representa de xeito independente pois está incluído dentro da compoñente matplotlib.
 
 No diagrama \ref{fig:diaSeq1-2} inclúense os caso de uso \ref{uc:CU.01} e \ref{uc:CU.02}, xa que o \ref{uc:CU.02} estende ó \ref{uc:CU.01}, polo que é máis claro representalos xuntos.
 \begin{figure}
