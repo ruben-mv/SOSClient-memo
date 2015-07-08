@@ -48,27 +48,27 @@ Na figura \ref{fig:MVCvsMV} móstrase de xeito gráfico a diferencia entre o pat
 Para describir o comportamento do sistema desde un punto de vista dinámico empréganse os diagramas de secuencia, nos que se describe a interacción entre as distintas compoñentes do sistema para cumprir cada caso de uso definido.
 
 Para conseguir un nivel de detalle suficiente para describir o comportamento do sistema dividisen as compoñentes segundo a arquitectura \emph{Model/View} proposta. A compoñente SOSClient divídese en SOSClientDialog, que representa a vista, e Sensor Observation Service, que representa o modelo. No caso da compoñente SOSPlot, a vista é representada pola compoñente SOSPlotDialog e o modelo non se representa de xeito independente pois está incluído dentro da compoñente matplotlib.
-
+\newpage
 No diagrama \ref{fig:diaSeq1-2} inclúense os caso de uso \ref{uc:CU.01} e \ref{uc:CU.02}, xa que o \ref{uc:CU.02} estende ó \ref{uc:CU.01}, polo que é máis claro representalos xuntos.
-\begin{figure}
+\begin{figure}[H]
  \centering
- \includegraphics[width=\textwidth]{images/seq1-2.eps}
+ \includegraphics[width=.9\textwidth]{images/seq1-2.eps}
  \caption{Diagrama de secuencia para os casos de uso \ref{uc:CU.01} e \ref{uc:CU.02}}
  \label{fig:diaSeq1-2}
 \end{figure}
 
 O diagrama \ref{fig:diaSeq3} representa o comportamento para o caso de uso \ref{uc:CU.03}.
-\begin{figure}
+\begin{figure}[H]
  \centering
- \includegraphics[width=\textwidth]{images/seq3.eps}
+ \includegraphics[width=.9\textwidth]{images/seq3.eps}
  \caption{Diagrama de secuencia para o caso de uso \ref{uc:CU.03}}
  \label{fig:diaSeq3}
 \end{figure}
 
 Para cubrir a funcionalidade requirida polo caso de uso \ref{uc:CU.04} existe o \emph{plugin} \emph{TimeManager} para QGIS, polo que o que representa o diagrama \ref{fig:diaSeq4} é o procedemento para que a capa xerada coas observacións sexa controlada polo \emph{TimeManager}.
-\begin{figure}
+\begin{figure}[H]
  \centering
- \includegraphics[width=\textwidth]{images/seq4.eps}
+ \includegraphics[width=.9\textwidth]{images/seq4.eps}
  \caption{Diagrama de secuencia para o caso de uso \ref{uc:CU.04}}
  \label{fig:diaSeq4}
 \end{figure}

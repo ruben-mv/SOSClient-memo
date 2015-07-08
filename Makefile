@@ -1,11 +1,11 @@
 all: traballo caratula
 
 traballo:
-	pdflatex traballo
+	pdflatex -shell-escape traballo
 	#makeindex ${FICHERO_TEX}.idx
 	bibtex traballo
-	pdflatex traballo
-	pdflatex traballo
+	pdflatex -shell-escape traballo
+	pdflatex -shell-escape traballo
 	cp traballo.pdf release/
 
 presentacion:

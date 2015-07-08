@@ -36,6 +36,8 @@
 \usepackage{xstring, xifthen}
 \usepackage[nottoc, notlot, notlof, notindex]{tocbibind}
 \usepackage[numbers, square, super]{natbib}
+\usepackage{minted}
+\usepackage{listings}
 
 %Formato de enlaces en PDF
 \hypersetup{
@@ -76,7 +78,8 @@
 \include{capitulos/apendicea}\cleardoublepage
 \include{capitulos/apendiceb}\cleardoublepage
 
-%\nocite{*}
+\nocite{*}
 \bibliography{bibliografia}
 \bibliographystyle{plain}
+
 \end{document}
