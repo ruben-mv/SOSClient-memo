@@ -20,7 +20,7 @@ caratula:
 
 clean:
 	ls traballo.* | grep -v \.tex$ | xargs rm
-	#ls presentacion.* | grep -v \.tex$ | xargs rm
+	ls presentacion.* | grep -v \.tex$ | xargs rm
 	ls caratula.* | grep -v \.tex$ | xargs rm
 	rm -Rf *log *lot *lof *aux *toc *pdf *blg *bbl *bak *~
 	cd capitulos && rm -Rf *log *lot *lof *aux *toc *pdf *blg *bbl *bak *~

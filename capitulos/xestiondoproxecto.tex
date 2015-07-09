@@ -4,14 +4,14 @@ A xestión do proxecto ten como finalidade definir e alcanzar os obxectivos do m
 Na sección III do PMBOK\cite{PMBOK} descríbense amplamente os distintos tipos de procesos que se inclúen dentro da xestión do proxecto, non obstante, para cada proxecto concreto será necesario seleccionar os máis apropiados para cumprir co obxectivo do mesmo. Nas seguintes seccións detállanse os procesos que se levaron a cabo para a xestión do presente proxecto.
 
 \section{Alcance do proxecto}
-Os procesos de xestión do alcance do proxecto son os encargados de asegurar que o proxecto inclúa o traballo requirido, e só o requirido, para completar o proxecto de forma satisfactoria.
+Os procesos de xestión do alcance do proxecto son os encargados de asegurar que o proxecto inclúa o traballo requirido, e so o requirido, para completar o proxecto de forma satisfactoria.
 
 \subsection{Definición do alcance}\label{subsec:DefAlcance}
 O obxectivo deste proxecto é dotar ó Sistema de Información Xeográfica QGIS da capacidade de consultar fontes de datos de observacións a través da interface SOS e representar os datos obtidos no contorno de mapas proporcionado pola ferramenta, de xeito que podan ser explorados e analizados polo usuario. Para acadar este obxectivo desenvolverase un \emph{plugin} para o programa QGIS, coas seguintes funcionalidades básicas:
 
 \begin{itemize}
 \item Conectarse a un servidor SOS e obter as capacidades do servizo a través da operación GetCapabilities.
-\item En base ás capacidades do servidor permitir xerar unha petición de observacións, de forma sinxela, sin necesidade de coñecementos técnicos do SOS.
+\item En base ás capacidades do servidor, permitir xerar unha petición de observacións, de forma sinxela e sen necesidade de coñecementos técnicos do SOS.
 \item Permitir modificar a petición xerada manualmente se o usuario o desexa.
 \item Obter as observacións a través da operación GetObservations.
 \item Coas observacións descargadas xerar unha capa vectorial que conteña a información xeográfica, temporal e os valores das propiedades observadas.
@@ -40,7 +40,7 @@ A Estrutura de Descomposición do Traballo (EDT) axuda a dividir o proxecto en p
 \section{Metodoloxía}\label{sec:PlanXestion}
 Unha das primeiras decisións a tomar á hora de iniciar un proxecto é a metodoloxía a seguir para levalo a cabo. A metodoloxía define o ciclo de vida do proxecto, e por tanto, as fases que conectan o inicio co fin do mesmo. É moi importante polo tanto que a metodoloxía elixida se adapte á natureza do proxecto, dos produtos e dos demais aspectos relacionados.
 
-Existen dous tipos xerais de metodoloxías, as preditivas que consisten nunha planificación inicial ríxida a seguir durante todo o ciclo de vida do proxecto, e as áxiles, que asumen que existirán cambios o longo do ciclo de vida do proxecto polo que son máis flexibles para axilizar o desenvolvemento e a capacidade de adaptación ós cambios. Dada a nula experiencia previa nas tecnoloxías a empregar e  na área de coñecemento do proxecto o uso dunha metodoloxía preditiva non é aconsellable. Entre as metodoloxías áxiles seleccionase \emph{Scrum}\cite{ScrumManager}, por ser unha das máis utilizadas e porque o equipo de desenvolvemento xa está familiarizado con ela.
+Existen dous tipos xerais de metodoloxías, as preditivas, que consisten nunha planificación inicial ríxida a seguir durante todo o ciclo de vida do proxecto, e as áxiles, que asumen que existirán cambios o longo do ciclo de vida do proxecto polo que son máis flexibles para axilizar o desenvolvemento e a capacidade de adaptación ós cambios. Dada a nula experiencia previa nas tecnoloxías a empregar e  na área de coñecemento do proxecto o uso dunha metodoloxía preditiva non é aconsellable. Entre as metodoloxías áxiles seleccionase \emph{Scrum}\cite{ScrumManager}, por ser unha das máis utilizadas e porque o equipo de desenvolvemento xa está familiarizado con ela.
 
 \subsection{Aplicación da metodoloxía Scrum}
 
@@ -292,7 +292,7 @@ Co obxectivo de non engadir complexidade ó seguimento do proxecto so se planifi
 A xestión da configuración\cite{GPGC} ten como propósito establecer e manter a integridade dos elementos de traballo. No proxecto que nos ocupa os elementos de traballo a xestionar son o código fonte do \emph{plugin}, o código fonte da documentación, e os distintos entregables xerados.
 
 \subsection{Control do código fonte}
-Dentro do código fonte a xestionar inclúese tanto o código do aplicación, imaxes, documentos de axuda e demais que se inclúen no \emph{plugin} empaquetado, como o código fonte para xerar a documentación.
+Dentro do código fonte a xestionar inclúese tanto o código da aplicación, imaxes, documentos de axuda e demais que se inclúen no \emph{plugin} empaquetado, como o código fonte para xerar a documentación.
 
 En ambos casos o procedemento de xestión da configuración se fai a través do sistema de xestión de versións \emph{Git}. Mantéñense en local dous repositorios diferentes, un para aplicación e outro para documentación, cada un coa súa réplica remota correspondente aloxada en \emph{GitHub}\footnote{\url{https://github.com/}}. As carpetas dos repositorios locais replícanse en \emph{Dropbox}\footnote{\url{https://www.dropbox.com/}} co obxectivo de ter unha copia redundante na nube e acceso desde distintos ordenadores en todo momento.
 
