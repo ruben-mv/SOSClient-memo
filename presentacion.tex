@@ -5,232 +5,285 @@
 % Elegir el estilo que se desee, hay cientos en la red
 
 \documentclass{beamer}
-\setbeamertemplate{navigation symbols}{}
-\usepackage{beamerthemeshadow}
-%\usepackage[galician]{babel}
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
-%\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usepackage{ragged2e} %Alineación de texto
+\usepackage{etoolbox}
+\usepackage{todonotes}
+\usepackage{animate}
 
-
-% \usetheme{Warsaw}
+%\usetheme{Warsaw}
 % \usetheme{Rochester}
-% \usetheme{bars}
+%\usetheme{bars}
 % \usetheme{Bergen}
 % \usetheme{Boadilla}
-% \usetheme{Boxes}
 % \usetheme{classic}
 % \usetheme{Madrid}
 % \usetheme{Pittsburgh}
 % \usetheme{Antibes}
 % \usetheme{Montpellier}
 % \usetheme{Berkeley}
-% \usetheme{PaloAlto}
+%\usetheme{PaloAlto}
 % \usetheme{Goettingen}
 % \usetheme{Marburg}
 % \usetheme{Hannover}
 %\usetheme{JuanLesPins}
 % \usetheme{Berlin}
 % \usetheme{Ilmenau}
-% \usetheme{Dresden}
+\usetheme{shadow}
 % \usetheme{Luebeck}
 %\usetheme{Darmstadt}
 % \usetheme{Frankfurt}
 % \usetheme{Singapore}
-% \usetheme{Szeged}
+%\usetheme{Szeged}
 %\usetheme{Copenhagen}
 % \usetheme{lined}
 % \usetheme{Malmoe}
-% \usetheme{Tree}
 % \usetheme{shadow}
 % \usetheme{sidebar}
 % \usetheme{split}
 % \usetheme{default}
-%\setbeamercovered{transparent}
+%\usetheme{Dresden}
+\usecolortheme{lily}
+\usefonttheme{structurebold}
 
-%%%%%%%%%% Choose color scheme%%%%%%%%
-% \usecolortheme{default}
-% \usecolortheme{sidebartab}
-% \usecolortheme{albatross}
-%\usecolortheme{beetle}
-%\usecolortheme{crane}
-% \usecolortheme{dolphin}
-% \usecolortheme{dove}
-% \usecolortheme{fly}
-% \usecolortheme{seagull}
-% \usecolortheme{lily}
-% \usecolortheme{orchid}
-% \usecolortheme{seahorse}
-% \usecolortheme{rose}
-% \usecolortheme{whale}
-% \usecolortheme{structure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamerfont{title}{size=\huge,series=\bfseries,parent=structure}
+\setbeamerfont{author}{size=\large,series=\bfseries,parent=structure}
+%\setbeamerfont{institute}{size=\tiny}
+%\beamertemplategridbackground[0.5cm]
 
-%\useoutertheme{shadow}
-%\useoutertheme{infolines}
-%\useoutertheme{split}
+\setbeamertemplate{navigation symbols}{}
+
+\useoutertheme[footline,subsection=false]{miniframes}
+\useinnertheme{circles}
 
 \hypersetup{pdfpagemode=FullScreen}
+\setbeamercovered{transparent}
+\apptocmd{\frame}{}{\justifying}{}
+\addtobeamertemplate{block begin}{}{\justifying}
 
 \begin{document}
+\titlegraphic{\includegraphics[width=25mm]{images/logo_usc.eps}}
 \title{Visualización de observacións en SIX de escritorio}
-\subtitle{Grao en Enxeñaría Informática \\
-Universidade de Santiago de Compostela}  
 \author{Rubén Mosquera Varela}
-\institute{Director: José Ramón Ríos Viqueira\\Codirector: Manuel Antonio Regueiro Seoane}
-\date{22 de Xullo de 2015} 
+\institute{Traballo de Fin de Grao en Enxeñaría Informática\\
+\bigskip Directores: José Ramón Ríos Viqueira e Manuel Antonio Regueiro Seoane}
+\date{Xullo de 2015}
 
-\begin{frame}
-\titlepage
+%\addtobeamertemplate{frametitle}{}{
+%\begin{tikzpicture}[remember picture,overlay]
+%\node at([shift={(-0.6cm,-0.6cm)}]current page.north east) {\includegraphics[height=.6cm,width=.6cm]{images/presentacion/sosclient.png}};
+%\end{tikzpicture}}
+
+\begin{frame}[plain]
+	\transdissolve
+	\titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Táboa de contidos}\tableofcontents
-\end{frame} 
-
-\section{Motivación e obxectivos} 
-%\subsection{Ejemplo de subsección}
-\begin{frame}
-\frametitle{Motivación} 
-%Cada pantalla tiene su título.
+\begin{frame}{Índice}
+	\transdissolve
+	\tableofcontents
 \end{frame}
-%
-%\subsection{Ejemplo de lista}
-%
-%\begin{frame}
-%\frametitle{Lista no numerada}
-%\begin{itemize}
-%\item una  
-%\item dos 
-%\item tres 
-%\item cuatro
-%\end{itemize} 
-%\end{frame}
-%
-%\begin{frame}
-%\frametitle{Lista con pausa}
-%\begin{itemize}
-%\item número uno \pause 
-%\item número dos \pause 
-%\item número tres \pause 
-%\item número cuatro
-%\end{itemize} 
-%\end{frame}
-%
-%\subsection{Otro ejemplo de lista}
-%\begin{frame}
-%\frametitle{Lista numerada}
-%\begin{enumerate}
-%\item una  
-%\item dos 
-%\item tres 
-%\item cuatro
-%\end{enumerate}
-%\end{frame}
-%
+
+\section{Introdución}
+\begin{frame}{Contextualización}{Sistema de información xeográfica}
+	\onslide<1->{\begin{block}{Que é un SIX?}
+	\begin{itemize}
+	\item Sistema deseñado para capturar, almacenar, manipular, analizar e presentar calquera tipo de información xeograficamente referenciada.
+	\item Usos: meteoroloxía, cartografía, hidroloxía, xestión de recursos, loxística, avaliación do impacto ambiental, etc.
+	\end{itemize}
+	\end{block}}
+	\onslide<2->{\begin{block}{}
+	\begin{columns}[T]
+	\begin{column}{.3\textwidth}
+	{\usebeamerfont{structure}{\usebeamercolor[fg]{structure} Exemplos}}
+	\begin{itemize}
+		\item<2->Geomedia
+		\item<3->ArcGIS
+		\item<4->gvSIG
+		\item<5->QGIS
+	\end{itemize}
+	\end{column}
+	\begin{column}{5cm}
+	\begin{overprint}
+		\only<1>{\begin{minipage}{3.5cm}\hfill\vspace{3.5cm} \end{minipage}}
+		\includegraphics<2>[height=3.5cm]{images/presentacion/geomedia.jpg}
+		\includegraphics<3>[height=3.5cm]{images/presentacion/ArcGIS.png}
+		\includegraphics<4>[height=3.5cm]{images/presentacion/GvSIG.jpg}
+		\includegraphics<5>[height=3.5cm]{images/presentacion/QGIS.png}
+	\end{overprint}
+	\end{column}
+	\end{columns}
+	\end{block}}
+\end{frame}
+
+\begin{frame}{Contextualización}{Observación medioambiental}
+\onslide<1->
+	{\begin{block}{Observación}
+	\begin{columns}
+	\begin{column}{.55\textwidth}\justifying
+	É un evento que estima unha propiedade, nun momento concreto, dunha entidade de interese,
+utilizando un procedemento especificado e que xera un resultado.
+	\end{column}
+	\begin{column}{.35\textwidth}
+	\includegraphics<1->[width=\textwidth]{images/presentacion/OaM_4_dummies_2.png}
+	\end{column}
+	\end{columns}
+	\end{block}}
+\onslide<2->	
+	{\begin{block}{}
+	\begin{columns}[T]
+	\begin{column}{.35\textwidth}\justifying
+	{\usebeamerfont{structure}{\usebeamercolor[fg]{structure} Información ambiental}}
+	\begin{itemize}
+		\item<2-> Inxente e crecente volume
+		\item<3-> Moi heteroxéneo
+		\item<4-> Diversas axencias implicadas
+	\end{itemize}
+	\end{column}
+	\begin{column}{.55\textwidth}
+	\begin{overprint}
+		\only<1>{\begin{minipage}{3cm}\hfill\vspace{3cm} \end{minipage}}
+		\includegraphics<2>[height=3cm]{images/presentacion/estacionstemperatura.png}
+		\includegraphics<3>[height=3cm]{images/presentacion/sensores.png}
+		\includegraphics<4>[height=3cm]{images/presentacion/inspire.jpg}
+	\end{overprint}
+	\end{column}
+	\end{columns}
+	\end{block}}
+\end{frame}
+
+\begin{frame}{Contextualización}{Open Geospatial Consortium (OGC)}
+\onslide<1->{
+\begin{block}{Open Geospatial Consortium (OGC)}
+Consorcio internacional co obxectivo de desenvolver e publicar estándares no eido da información xeoespacial
+\end{block}}
+\onslide<2->{
+\begin{block}{Sensor Web Enablement (SWE)}
+		\onslide<3->{
+		Sensor Observation Service (SOS)
+		\begin{itemize}
+		\item GetCapabilities
+		\item DescribeSensor
+		\item GetObservations
+		\end{itemize}}
+		\onslide<4->{
+		Observations\&Measurements (O\&M)
+		\begin{itemize}
+		\item Observations
+		\item Measurements
+		\end{itemize}}
+\end{block}}
+\end{frame}
+
+\begin{frame}{Motivación}{}
+	{\begin{block}{Motivación}
+	Inexistencia dun sistema de información xeográfica libre e de propósito xeral que permita a incorporación e análise de datos de observacións dispoñibles a través da interface SOS.\end{block}}
+\end{frame}
+
+\begin{frame}{Obxectivos}{}
+	{\begin{block}{Obxectivos}
+	Desenvolvemento dunha extensión para a ferramenta SIX libre QGIS que permita a conexión a fontes de datos SOS e a exploración dos seus contidos no contorno de mapas proporcionado pola ferramenta.
+	\begin{itemize}
+	\item<2->Interacción co SOS para a obtención dos datos de sensores e as observacións realizadas polos mesmos.
+	\item<3->Procesamento dos datos obtidos a través dos servizos SOS para a súa adecuación á estrutura de datos manexada por QGIS.
+	\item<4->Dotar á ferramenta das utilidades necesarias para interaccionar comodamente con datos en series temporais ou variables multidimensionais.
+	\end{itemize}
+	\end{block}}
+\end{frame}
+
+\section{Deseño do software}
+\begin{frame}{Arquitectura do sistema}{Visión estática}
+\begin{block}{}
+\begin{overprint}
+	\only<1>{\centerline{\includegraphics[width=0.50\linewidth]{images/presentacion/componentes0.eps}}}
+	\only<2>{\centerline{\includegraphics[width=0.50\linewidth]{images/presentacion/componentes1.eps}}}
+	\only<3>{\centerline{\includegraphics[width=0.50\linewidth]{images/presentacion/componentes2.eps}}}
+\end{overprint}
+\end{block}
+\end{frame}
+
+\begin{frame}{Arquitectura do sistema}{Visión dinámica}
+\begin{block}
+\centering
+\input{images/presentacion/secuencia.tex}
+\end{block}
+\end{frame}
+
+\section{Desenvolvemento}
+\begin{frame}[t]{Desenvolvemento}{Sprint 1}
+\begin{block}{}
+\begin{itemize}\bigskip\bigskip\bigskip
+\item Deseño da interface gráfica para a ventá de conexión co SOS\smallskip
+\item Análise das distintas posibilidades para o procesamento do XML en Python\smallskip
+\item Definición dunha estrutura extensible para o módulo de procesamento do XML\smallskip
+\item Automatización das probas unitarias con PyUnit\bigskip\bigskip\bigskip
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[t]{Desenvolvemento}{Sprint 2}
+\begin{block}{}
+\begin{itemize}\bigskip\bigskip\bigskip
+\item Conclúese o módulo de procesamento XML\smallskip
+\item Creación de capas vectoriais, válidas para TimeManager\smallskip
+\item Filtros básicos de observacións\smallskip
+\item Probas de concepto coa librería matplotlib\bigskip\bigskip\bigskip
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[t]{Desenvolvemento}{Sprint 3}
+\begin{block}{}
+\begin{itemize}\bigskip\bigskip\bigskip
+\item Filtros espaciais, con selección sobre o mapa\smallskip
+\item Deseño interface para a visualización de gráficas\smallskip
+\item Selección de propiedades a visualizar\smallskip
+\item Visualización de varias Features Of Interest simultaneamente\smallskip
+\item Modificación de estilos e outros datos da gráfica xerada\bigskip\bigskip\bigskip
+\end{itemize}
+\end{block}
+\end{frame}
+
 \section{Demostración}
-%\subsection{Tablas}
-%
-%\begin{frame}
-%\frametitle{Tablas}
-%\begin{tabular}{|c|l|r|} \hline
-%\textbf{Centrado} & \textbf{Izquierda} & \textbf{Derecha} \\ \hline
-%AAAA  & 1000 & aaaa \\ \hline
-%BB    & 20   & bb \\ \hline
-%\end{tabular}
-%\end{frame}
-%
-%\begin{frame}
-%\frametitle{Tabla con pausa}
-%\begin{tabular}{c c c}
-%A & B & C \\ \pause 
-%1 & 2 & 3 \\  \pause 
-%A & B & C \\ 
-%\end{tabular} 
-%\end{frame}
-%
-\section{Conclusións}
-%\subsection{Bloques}
-%
-\begin{frame}
-\frametitle{Conclusións}
-%
-%\begin{block}{Bloque normal}
-%Texto del bloque normal
-%\end{block}
-%
-%\begin{exampleblock}{Bloque de ejemplo}
-%Texto del bloque ejemplo
-%\end{exampleblock}
-%
-%\begin{alertblock}{Bloque de alerta}
-%Texto del bloque alerta
-%\end{alertblock}
+\begin{frame}[allowframebreaks]{Exemplos de uso}
+\begin{block}{Gráficas de temperaturas}
+\includegraphics[width = 1.0 \textwidth]{images/presentacion/grafica.png}
+\end{block}
+\begin{block}{Animación da velocidade do vento}
+\animategraphics[width = 1.0 \textwidth,loop,autoplay]{1}{images/presentacion/animacion/frame}{00}{30}
+%\includegraphics[width = 1.0 \textwidth]{images/presentacion/animacion/frame00.png}
+\end{block}
 \end{frame}
-%
-%\section{Sección 4}
-%\subsection{Pantalla dividida}
-%
-%\begin{frame}
-%\frametitle{Pantalla dividida}
-%\begin{columns}
-%\begin{column}{5cm}
-%\begin{itemize}
-%\item una lista
-%\item de puntos 
-%\item mas una tabla 
-%\end{itemize}
-%\end{column}
-%\begin{column}{5cm}
-%\begin{tabular}{|c|c|c|} \hline
-%\textbf{Mes} & \textbf{Día} & \textbf{Hora} \\ \hline
-%Enero   & 10 & 15:30 \\ \hline
-%Febrero & 20 & 20:00 \\ \hline
-%\end{tabular}
-%\end{column}
-%\end{columns}
-%\end{frame}
-%
-%\subsection{Figuras} 
-%\begin{frame}
-%\frametitle{Incluir figuras}
-%\begin{figure}
-%\includegraphics[scale=0.3]{images/logo_usc.eps} 
-%\caption{Logo de la USC}
-%\end{figure}
-%\end{frame}
-%
-%\subsection{Listas con figuras y pausas} 
-%
-%\begin{frame}
-%\frametitle{Listas con figuras y pausas}
-%\begin{columns}
-%\begin{column}{4cm}
-%\begin{itemize}
-%\item<1-> Una
-%\item<3-> Dos
-%\item<5-> Tres
-%\end{itemize}
-%\vspace{3cm} 
-%\end{column}
-%\begin{column}{4cm}
-%\begin{overprint}
-%\includegraphics<2>[scale=0.05]{images/logo_usc.eps}
-%\includegraphics<4>[scale=0.10]{images/logo_usc.eps}
-%\includegraphics<6>[scale=0.15]{images/logo_usc.eps}
-%\end{overprint}
-%\end{column}
-%\end{columns}
-%\end{frame}
-%
-%\subsection{Cuando se necesita más espacio} 
-%\begin{frame}[plain]
-%\frametitle{Pantalla plana con sólo una figura}
-%\begin{figure}
-%\includegraphics[scale=0.3]{images/logo_usc.eps} 
-%\caption{Una figura grande}
-%\end{figure}
-%\end{frame}
+
+\section{Conclusións}
+\begin{frame}{Conclusións e traballo futuro}
+\onslide<1->{\begin{block}{Conclusións}
+\begin{itemize}
+\item Maior dificultade: Baixo nivel de implantación e madurez do estándar SOS.
+\item Obxectivo cumprido: Soporte para os servidores SOSVDI do CiTIUS.
+\item Aprobación do plugin no repositorio oficial de QGIS.
+\end{itemize}
+\end{block}}
+\onslide<2->{\begin{block}{Traballo futuro}
+\begin{itemize}
+\item Sensor Observation Service 2.0.
+\item Soporte de máis tipos de Observations\&Measurements.
+\item Ampliación da funcionalidade de visualización de gráficas.
+\item Funcionalidades para a visualización en tempo real.
+\end{itemize}
+\end{block}}
+\end{frame}
+
+\section*{}
+\begin{frame}[plain]{\inserttitle}{\insertauthor}
+	\transdissolve
+	\begin{center}
+		\textbf{\Huge {\usebeamercolor[bg]{title} Grazas pola súa atención!}}\\
+		\bigskip
+		\large{Dúbidas e comentarios?}
+	\end{center}
+\end{frame}
 
 \end{document}
-

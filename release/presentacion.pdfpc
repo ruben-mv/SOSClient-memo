@@ -1,0 +1,53 @@
+[file]
+presentacion.pdf
+[notes]
+### 1
+Saúdo e presentación
+### 2
+Explicación muy breve da estructura
+### 3
+Propietarios vs Libres, QGIS maior comunidade SIX libres.
+### 4
+Explicación de observación, con exemplo.
+
+- Gran volume xerado a cada instante.
+- Heteroxeneidade pola súa natureza e polas medios de captura e representación.
+- Directiva europea demandan as institucions publicas facer os seus datos accesibles. INSPIRE.
+### 5
+OGC: >500 empresas , universidades, e outros organismos.
+
+SWE: Facer accesibles os datos de sensores a través da web. SOS, SensorML, O&M, etc.
+
+SOS: 3 básicas para todos servidores, para este caso GetCapabilities e GetObservations
+
+O&M: Define modelo de datos, diversas tipoloxías.
+### 7
+Cumplimento do obxetivo xeral dependo do grao de cumplimento de tres obxetivos máis concretos.
+### 8
+Plugin formado por dous compoñentes diferenciados que interactúan directamente co QGIS.
+
+Uso de outras compoñentes externas:
+- Plugin para QGIS TimeManager
+- Librería matplotlib
+### 9
+Fluxo de iteración entre compoñentes para a creación de unha capa vectorial de QGIS coa información de observacións.
+### 10
+- Análogo a formularios de QGIS para outros servicios similares (WFS, WCS, WMS)
+
+- Todos similares, QtXml para non engadir dependencias
+
+- Patrón de deseño factoria, clase base XMLParser que encapsula as particularidades da librería
+
+- Implementación de probas con distintos formatos de xml
+### 11
+- Soporte capabilities, Observations, Measurements e interpretación de GML.
+
+- Formateado do campo tempo, capa persistente en disco que permita consultas de subconxunto.
+
+- Seleccionar propiedades, procedementos e filtros temporais.
+
+- Visualización propiedade vs tempo
+### 12
+- Filtros espaciais, e escalares.
+
+- Visualización de gráficas...
