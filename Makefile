@@ -8,12 +8,12 @@ traballo:
 	pdflatex traballo
 
 presentacion:
-	pdflatex presentacion.tex
-	pdflatex presentacion.tex
+	pdflatex presentacion
+	pdflatex presentacion
 
 caratula:
-	pdflatex caratula.tex
-	pdflatex caratula.tex
+	pdflatex caratula
+	pdflatex caratula
 
 clean:
 	ls traballo.* | grep -v \.tex$ | xargs rm
